@@ -1,9 +1,7 @@
-const errorSomethingWrong = { code: 'something_wrong', message: 'Something is wrong' };
-
-const getAllUsers = async (req, res, next) => {
+const getAllUsers = async (_req, res) => {
   console.log('aqui');
   res.status(200).json({
-    users: "Nois",
+    users: 'Nois',
   });
 };
 
