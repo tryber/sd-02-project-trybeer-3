@@ -8,7 +8,7 @@ const MenuSuperior = () => {
   const handleClick = () => setOpen(!open);
   return (
     <div className="Menu_Sup_All">
-                                                <div className="Menu_Sup">
+      <div className="Menu_Sup">
         <HamburgerMenu
           isOpen={open}
           menuClicked={handleClick}
