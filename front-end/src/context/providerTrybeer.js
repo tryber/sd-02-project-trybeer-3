@@ -13,7 +13,7 @@ const ProviderTrybeer = ({ children }) => {
       { children }
     </Trybeer.Provider>
   );
-}
+};
 
 export default ProviderTrybeer;
 

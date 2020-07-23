@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import trybeer from './context';
+import Login from './pages/Login'
 
-function App() {
-  const { teste } = useContext(trybeer);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>{teste}</p>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <Router>
+    <Switch>
+      <Route to="/" component={Login} />
+    </Switch>
+  </Router>
+);
 
 export default App;
