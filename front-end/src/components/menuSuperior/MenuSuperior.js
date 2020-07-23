@@ -4,7 +4,7 @@ import Trybeer from '../../context';
 import '../../styles/MenuSuperior.css';
 
 const MenuSuperior = () => {
-  const { open, setOpen } = useContext(Trybeer);
+  const { open, setOpen, page } = useContext(Trybeer);
   const handleClick = () => setOpen(!open);
   return (
     <div className="Menu_Sup_All">
@@ -14,10 +14,10 @@ const MenuSuperior = () => {
           menuClicked={handleClick}
           color='white'
         />
-        <h2>TryBeer</h2>
+        <h2>{page}</h2>
       </div>
     </div>
-  );
+  )
 };
 
 export default MenuSuperior;
