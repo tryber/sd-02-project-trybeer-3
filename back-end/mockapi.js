@@ -15,5 +15,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', testRoute);
 
 app.listen(3001, () => {
-  console.log(`API Mockada`);
+  console.log('API Mockada');
 });

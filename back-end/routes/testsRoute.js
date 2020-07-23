@@ -35,7 +35,7 @@ router
         {
           name: 'Produto 2',
           price: 200,
-        }
+        },
       ],
     });
   });
@@ -49,7 +49,7 @@ router
         productId: 1,
         name: 'bola',
         quantity: 5,
-      }
+      },
     });
   });
 
