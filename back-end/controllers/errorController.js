@@ -4,6 +4,7 @@ const codes = {
   something_wrong: 500,
   unauthorized: 401,
   access_denied: 403,
+  conflict: 409,
 };
 
 const errorController = async (err, req, res, _next) => res.status(codes[err.code])

@@ -45,26 +45,26 @@ VALUES
 INSERT INTO Products (product_name, product_price)
 VALUES
     ('Skol Lata 350ml', '2.20'),
-	('Heineken 600ml', '7.50'),
-	('Antarctica Pilsen 300ml', '2.49'),
-	('Brahma 600ml', '7.50'),
-	('Skol 269ml', '2.19'),
-	('Skol Beats Senses 313ml', '4.49'),
-	('Becks 330ml', '4.99'),
-	('Brahma Duplo Malte 350ml', '2.79'),
-	('Becks 600ml', '8.89'),
-	('Skol Beats Senses 269ml', '3.57'),
-	('Stella Artois 275ml', '3.49');
+    ('Heineken 600ml', '7.50'),
+    ('Antarctica Pilsen 300ml', '2.49'),
+    ('Brahma 600ml', '7.50'),
+    ('Skol 269ml', '2.19'),
+    ('Skol Beats Senses 313ml', '4.49'),
+    ('Becks 330ml', '4.99'),
+    ('Brahma Duplo Malte 350ml', '2.79'),
+    ('Becks 600ml', '8.89'),
+    ('Skol Beats Senses 269ml', '3.57'),
+    ('Stella Artois 275ml', '3.49');
     
 INSERT INTO Orders (delivered)
 VALUES
-	(TRUE),
+    (TRUE),
     (TRUE),
     (FALSE);
     
 INSERT INTO Order_Products (product_id, quantity, order_id) 
 VALUES
-	(1, 2, 1),
+    (1, 2, 1),
     (1,6 , 2),
     (1, 3, 3),
     (3, 4, 1),
