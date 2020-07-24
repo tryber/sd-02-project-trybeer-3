@@ -39,6 +39,7 @@ VALUES
     ('folgado@gmail.com', '123456', 'Folgado', 'client'),
     ('gi@gmail.com', '123456', 'Gi', 'client'),
     ('pedro@gmail.com', '123456', 'Pedro', 'client'),
+    ('tryber@gmail.com', '123456', 'Tryber', 'admin'),
     ('roz@wpp.com', '123456', 'Roz', 'admin');
     
     
