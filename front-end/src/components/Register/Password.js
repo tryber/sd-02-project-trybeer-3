@@ -7,9 +7,9 @@ const InputPassword = () => {
     <div>
       <label htmlFor="InputPassword">Senha</label>
       <input
+        onChange={({ target }) => setPassword(target.value)}
         type="password"
         id="InputPassword"
-        onChange={({ target }) => setPassword(target.value)}
       />
     </div>
   );

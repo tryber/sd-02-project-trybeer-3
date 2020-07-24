@@ -8,8 +8,8 @@ const InputName = () => {
       <label htmlFor="InputName">Nome</label>
       <input
         id="InputName"
-        type="text"
         onChange={({ target }) => setUserName(target.value)}
+        type="text"
       />
     </div>
   );
