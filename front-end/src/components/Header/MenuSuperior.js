@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import HamburgerMenu from 'react-hamburger-menu';
 import Trybeer from '../../context';
-import '../../styles/MenuSuperior.css';
+import '../../styles/Header.css';
 
-const MenuSuperior = () => {
+const Header = () => {
   const { open, setOpen, page } = useContext(Trybeer);
   const handleClick = () => setOpen(!open);
+
   return (
     <div className="Menu_Sup_All">
       <div className="Menu_Sup">
         <HamburgerMenu
           isOpen={open}
           menuClicked={handleClick}
-          color='white'
+          color="white"
         />
         <h2>{page}</h2>
       </div>
@@ -20,4 +21,4 @@ const MenuSuperior = () => {
   );
 };
 
-export default MenuSuperior;
+export default Header;
