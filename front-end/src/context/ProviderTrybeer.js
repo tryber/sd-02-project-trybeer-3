@@ -8,6 +8,7 @@ const ProviderTrybeer = ({ children }) => {
   const [emailUser, setEmailUser] = useState('');
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [isSalesman, setIsSalesman] = useState(false);
 
   const toProvider = {
     open,
@@ -20,6 +21,8 @@ const ProviderTrybeer = ({ children }) => {
     setUserName,
     password,
     setPassword,
+    isSalesman,
+    setIsSalesman,
   };
 
   return (
