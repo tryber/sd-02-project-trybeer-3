@@ -1,8 +1,9 @@
 import React from 'react';
 
+console.log(window.location.href);
 const Login = () => (
   <div>
-    <p>Olá</p>
+    <p>Login</p>
   </div>
 );
 
