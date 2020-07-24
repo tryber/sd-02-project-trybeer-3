@@ -8,6 +8,7 @@ const codes = {
 
 const errorController = async (err, req, res, _next) => res.status(codes[err.code])
   .json({
+    status: 'failed',
     code: err.code,
     message: err.message,
   });
