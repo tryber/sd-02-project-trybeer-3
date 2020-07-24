@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import Trybeer from './index';
 
 const ProviderTrybeer = ({ children }) => {
-  const [teste, setTeste] = useState("jorjao");
+  const [open, setOpen] = useState(false);
+  const [page, setPage] = useState('Produtos');
+
   const toProvider = {
-    teste, 
-    setTeste
+    open,
+    setOpen,
+    page,
+    setPage,
   };
+
   return (
     <Trybeer.Provider value={toProvider}>
-      { children }
+      {children}
     </Trybeer.Provider>
   );
 };
