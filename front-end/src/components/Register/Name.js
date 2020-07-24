@@ -6,7 +6,11 @@ const InputName = () => {
   return (
     <div>
       <label htmlFor="InputName">Nome</label>
-      <input id="InputName" onChange={({ target }) => setUserName(target.value)} />
+      <input
+        id="InputName"
+        type="text"
+        onChange={({ target }) => setUserName(target.value)}
+      />
     </div>
   );
 };

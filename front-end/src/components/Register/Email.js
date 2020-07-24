@@ -6,7 +6,11 @@ const InputEmail = () => {
   return (
     <div>
       <label htmlFor="InputEmail">Email</label>
-      <input id="InputEmail" onChange={({ target }) => setEmail(target.value)} />
+      <input
+        id="InputEmail"
+        type="email"
+        onChange={({ target }) => setEmail(target.value)}
+      />
     </div>
   );
 };
