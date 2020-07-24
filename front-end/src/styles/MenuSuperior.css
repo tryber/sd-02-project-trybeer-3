@@ -1,0 +1,13 @@
+.Menu_Sup_All {
+  background-color: black;
+  width: 100%;
+}
+
+.Menu_Sup {
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  width: 55%;
+}
