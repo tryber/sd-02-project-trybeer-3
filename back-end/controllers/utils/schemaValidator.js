@@ -19,8 +19,19 @@ const schemaUser = Joi.object({
     .required(),
 });
 
+const schemaChangeName = Joi.object({
+  name: Joi.string()
+    .pattern(new RegExp(/^[a-z ]+$/i), 'name')
+    .min(12)
+    .required(),
+  email: Joi.string()
+    .email()
+    .required(),
+});
+
 const objValidation = {
   user: schemaUser,
+  change_name: schemaChangeName,
 };
 
 const validationFunc = (body, validationField) => {
