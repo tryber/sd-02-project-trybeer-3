@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { postRegister } from '../../services';
 import Trybeer from '../../context';
 
 const validEmail = /[A-Z0-9]{1,}@[A-Z0-9]{2,}\.[A-Z0-9]{2,}/i;
@@ -9,12 +10,14 @@ const CheckData = () => {
   const { userName, password, emailUser } = useContext(Trybeer);
   const [wrongData, setWrongData] = useState(false);
 
-  const testValues = () => {
-    return validEmail.test(emailUser)
-      && validPassword.test(password)
-      && validName.test(userName)
-      ? console.log('requisição de cadastro aqui')
-      : setWrongData(true);
+  const testValues = async () => {
+    // return validEmail.test(emailUser)
+    //   && validPassword.test(password)
+    //   && validName.test(userName)
+    //   ? console.log('requisição de cadastro aqui')
+    //   : setWrongData(true);
+    // const { data: { user } } = await postRegister(JSON.stringify(obj));
+    // console.log(user);
   };
 
   return (
