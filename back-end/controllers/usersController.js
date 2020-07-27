@@ -1,4 +1,4 @@
-const { getUsers, createUser } = require('../services/usersService');
+const { getUsers, createUser, changeUserName } = require('../services/usersService');
 const { validationFunc } = require('./utils/schemaValidator');
 
 const getAllUsers = async (_req, res) => {
@@ -23,7 +23,21 @@ const register = async (req, res, next) => {
   });
 };
 
+const changeName = async (req, res, next) => {
+  const { name, email } = req.body;
+  const { error, message } = validationFunc({ name, email }, 'change_name');
+  if (error) return next({ code: 'invalid_data', message });
+
+  const user = await changeUserName(name, email);
+  if (user.error) return next({ code: 'not_found', message: 'Email not found' });
+
+  res.status(201).json({
+    status: 'success',
+  });
+};
+
 module.exports = {
   getAllUsers,
   register,
+  changeName,
 };
