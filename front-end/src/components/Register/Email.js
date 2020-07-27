@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import Trybeer from '../../context';
 
 const InputEmail = () => {
-  const { setEmail } = useContext(Trybeer);
+  const { setEmailUser } = useContext(Trybeer);
   return (
     <div>
       <label htmlFor="InputEmail">Email</label>
       <input
         id="InputEmail"
         type="email"
-        onChange={({ target }) => setEmail(target.value)}
+        onChange={({ target }) => setEmailUser(target.value)}
       />
     </div>
   );
