@@ -6,8 +6,8 @@ const APIGetProducts = 'http://localhost:3001/products';
 const APIPatchProfile = 'http://localhost:3001/profile';
 
 const headers = {
-  "Accept": "*/*",
-  "Content-Type": "application/json",
+  Accept: '*/*',
+  'Content-Type': 'application/json',
 };
 
 export const postRegister = async (obj) => {
