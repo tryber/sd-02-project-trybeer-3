@@ -1,7 +1,7 @@
 ## POST localhost:3001/login
 
 ```
-body: 
+body:
 {
     "email": "pedro@gmail.com",
     "password": "123456"
@@ -134,12 +134,13 @@ response:
 ```
 
 ## PATCH localhost:3001/profile
+
 ```
 req.body
 
+Lembrar de passar o token no auth
 {
     "name": "Pedro Henrique",
-    "email": "pedro@gmail.com" 
 }
 
 response
@@ -153,3 +154,5 @@ response
     "message": Mensagem do erro"
 }
 ```
+
+## POST localhost:3001/checkout

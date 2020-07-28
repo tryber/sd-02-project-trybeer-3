@@ -12,8 +12,8 @@ const getByEmail = async (email, fields) => {
 const createUserModel = async (fields, params) => insertDb('Users', fields, params);
 
 const changeName = async (name, email) => {
-  const query = `UPDATE Users SET name = '${name}' WHERE email = '${email}';`;
-  return queryDb(query);
+  const query = `UPDATE Users SET name = ? WHERE email = ?;`;
+  return queryDb(query, [name, email]);
 };
 
 module.exports = {
