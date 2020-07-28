@@ -10,9 +10,23 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-export const postRegister = async (obj) => {
-  return axios
+export const postRegister = async (obj) => (
+  axios
     .post(APIPostRegister, obj, { headers })
     .then((data) => data)
-    .catch((err) => console.log(err));
-};
+    .catch((err) => err)
+);
+
+export const getProducts = async () => (
+  axios
+    .get(APIGetProducts)
+    .then((data) => data)
+    .catch((err) => err)
+);
+
+export const postLogin = async (obj) => (
+  axios
+    .post(APIPostLogin, obj, { headers })
+    .then((success) => success)
+    .catch((err) => err)
+);
