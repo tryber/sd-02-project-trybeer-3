@@ -5,12 +5,24 @@ import Trybeer from './index';
 const ProviderTrybeer = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState('Produtos');
+  const [emailUser, setEmailUser] = useState('');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSalesman, setIsSalesman] = useState(false);
 
   const toProvider = {
     open,
     setOpen,
     page,
     setPage,
+    emailUser,
+    setEmailUser,
+    userName,
+    setUserName,
+    password,
+    setPassword,
+    isSalesman,
+    setIsSalesman,
   };
 
   return (
