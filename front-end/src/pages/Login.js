@@ -56,7 +56,7 @@ export default function Login() {
     if (senha.length >= 6 && regexEmail.test(email)) {
       return setDisabled(false);
     }
-    setDisabled(true);
+    return setDisabled(true);
   }, [email, senha]);
 
   const renderLoginButton = () => (
