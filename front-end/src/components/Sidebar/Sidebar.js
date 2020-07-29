@@ -10,19 +10,17 @@ const Sidebar = () => {
   const { open } = useContext(Trybeer);
 
   return (
-    <div
-      className="Sidebar_All"
-      hidden={!open}
-    >
-      <div className="Sidebar_User">
-        <p>Trybeer</p>
-        <ButtonProducts />
-        <ButtonOrders />
-        <ButtonProfile />
+    open && (
+      <div className="Sidebar_All">
+        <div className="Sidebar_User">
+          <p>Trybeer</p>
+          <ButtonProducts />
+          <ButtonOrders />
+          <ButtonProfile />
+        </div>
+        <ButtonExit />
       </div>
-      <ButtonExit />
-    </div>
-  );
+    ));
 };
 
 export default Sidebar;
