@@ -10,6 +10,12 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+const patchHeaders = (token) => ({
+  Accept: '*/*',
+  Authorization: token,
+  'Content-Type': 'application/json',
+});
+
 export const postRegister = async (obj) => (
   axios
     .post(APIPostRegister, obj, { headers })
@@ -28,5 +34,12 @@ export const postLogin = async (obj) => (
   axios
     .post(APIPostLogin, obj, { headers })
     .then((success) => success)
+    .catch((err) => err)
+);
+
+export const patchProfile = async (obj, token) => (
+  axios
+    .patch(APIPatchProfile, obj, { headers: patchHeaders(token) })
+    .then((data) => data)
     .catch((err) => err)
 );
