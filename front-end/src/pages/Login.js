@@ -47,6 +47,22 @@ const loginClick = async (email, senha) => {
   localStorage.setItem('Token do usuário logado', data.token);
 };
 
+const renderLoginButton = (email, senha, disabled) => (
+  <div className="btn-login-div">
+    <Link to="/products">
+      <button
+        type="button"
+        className="btn-login"
+        data-testid="signin-btn"
+        disabled={disabled}
+        onClick={() => loginClick(email, senha)}
+      >
+        ENTRAR
+      </button>
+    </Link>
+  </div>
+);
+
 export default function Login() {
   const [disabled, setDisabled] = useState(true);
   const [email, setEmail] = useState('');
@@ -59,21 +75,6 @@ export default function Login() {
     return setDisabled(true);
   }, [email, senha]);
 
-  const renderLoginButton = () => (
-    <div className="btn-login-div">
-      <Link to="/products">
-        <button
-          type="button"
-          className="btn-login"
-          data-testid="signin-btn"
-          disabled={disabled}
-          onClick={() => loginClick(email, senha)}
-        >
-          ENTRAR
-        </button>
-      </Link>
-    </div>
-  );
   return (
     <div>
       {renderLoginSection(email, setEmail, senha, setSenha)}

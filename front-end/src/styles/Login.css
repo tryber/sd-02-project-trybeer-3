@@ -56,7 +56,7 @@ button:disabled {
 }
 
 @media only screen and ( max-width : 600px ) {
-  
+
   .logincampo > input {
     align-items: center;
     box-sizing: border-box;
@@ -85,5 +85,4 @@ button:disabled {
     top: 789px;
     width: 280px;
   }
-
 }
