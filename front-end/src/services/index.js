@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const APIPostRegister = 'http://localhost:3001/register';
-const APIPostLogin = 'http://localhost:3001/login';
+const APIPostRegister = 'http://localhost:3001/user/register';
+const APIPostLogin = 'http://localhost:3001/user/login';
 const APIGetProducts = 'http://localhost:3001/products';
-const APIPatchProfile = 'http://localhost:3001/profile';
+const APIPatchProfile = 'http://localhost:3001/user/profile';
 
 const headers = {
   Accept: '*/*',
