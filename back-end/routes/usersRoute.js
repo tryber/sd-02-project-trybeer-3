@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllUsers, register, changeName } = require('../controllers/usersController');
-const { login } = require('../controllers/authenticatorController');
+const { login, authUser } = require('../controllers/authenticatorController');
 
 const router = express.Router();
 
@@ -18,6 +18,6 @@ router
 
 router
   .route('/profile')
-  .patch(changeName);
+  .patch(authUser, changeName);
 
 module.exports = router;

@@ -24,7 +24,8 @@ const register = async (req, res, next) => {
 };
 
 const changeName = async (req, res, next) => {
-  const { name, email } = req.body;
+  const { name } = req.body;
+  const { email } = req.user;
   const { error, message } = validationFunc({ name, email }, 'change_name');
   if (error) return next({ code: 'invalid_data', message });
 
