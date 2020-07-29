@@ -4,9 +4,10 @@ import InputName from '../components/Register/Name';
 import InputPassword from '../components/Register/Password';
 import CheckSalesman from '../components/Register/IsSalesman';
 import CheckData from '../components/Register/CheckData';
+import '../styles/Register.css';
 
 const Register = () => (
-  <div>
+  <div className="Register_father">
     <EmailInput />
     <InputName />
     <InputPassword />
