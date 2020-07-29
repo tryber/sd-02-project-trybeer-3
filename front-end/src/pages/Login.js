@@ -11,6 +11,7 @@ const btnSemConta = () => (
       <button
         type="button"
         className="btn-sem-conta"
+        data-testid="no-account-btn"
       >
         Ainda não tenho conta
       </button>
