@@ -18,26 +18,24 @@ const btnSemConta = () => (
 
 const renderLoginSection = (email, setEmail, senha, setSenha) => (
   <div className="logincampo">
-    <form>
-      <label htmlFor="email">E-mail:</label>
-      <input
-        id="email"
-        name="email"
-        type="text"
-        data-testid="email-input"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-      />
-      <label htmlFor="name">Senha:</label>
-      <input
-        id="senha"
-        name="senha"
-        type="password"
-        data-testid="password-input"
-        value={senha}
-        onChange={(event) => setSenha(event.target.value)}
-      />
-    </form>
+    <label htmlFor="email">E-mail:</label>
+    <input
+      id="email"
+      name="email"
+      type="text"
+      data-testid="email-input"
+      value={email}
+      onChange={(event) => setEmail(event.target.value)}
+    />
+    <label htmlFor="name">Senha:</label>
+    <input
+      id="senha"
+      name="senha"
+      type="password"
+      data-testid="password-input"
+      value={senha}
+      onChange={(event) => setSenha(event.target.value)}
+    />
   </div>
 );
 
@@ -57,7 +55,7 @@ export default function Login() {
     if (senha.length >= 6 && regexEmail.test(email)) {
       return setDisabled(false);
     }
-    setDisabled(true);
+    return setDisabled(true);
   }, [email, senha]);
 
   const renderLoginButton = () => (

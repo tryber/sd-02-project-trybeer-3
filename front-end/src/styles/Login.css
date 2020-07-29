@@ -11,6 +11,7 @@
 }
 
 .logincampo > input {
+  align-items: center;
   box-sizing: border-box;
   font-size: 25px;
   height: 70px;
@@ -49,6 +50,39 @@ button:disabled {
   height: 59px;
   left: 554px;
   margin-top: 10px;
+  text-decoration: none;
   top: 789px;
   width: 332px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logincampo > input {
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 25px;
+    height: 70px;
+    width: 330px;
+  }
+
+  .btn-login {
+    align-items: center;
+    background: rgb(28, 209, 24);
+    font-size: 20px;
+    height: 70px;
+    margin-top: 10px;
+    width: 330px;
+  }
+
+  .btn-sem-conta {
+    background: white;
+    box-sizing: border-box;
+    font-size: 25px;
+    height: 59px;
+    left: 554px;
+    margin-top: 10px;
+    text-decoration: none;
+    top: 789px;
+    width: 280px;
+  }
+
 }
