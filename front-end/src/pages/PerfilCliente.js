@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { postLogin } from '../services';
+// import { postLogin } from '../services';
 import Header from '../components/Header/MenuSuperior';
+import Trybeer from '../context';
 import '../styles/PerfilCliente.css';
 
 const renderPerfilSection = (emailCliente, clientName) => (
@@ -47,6 +48,7 @@ const renderSalvarButton = (email, senha, disabled) => (
 );
 
 export default function Login() {
+  const { perfilHeader } = useContext(Trybeer);
   getDados();
   // const [newClient, setNewClient] = useState('');
 
@@ -59,7 +61,9 @@ export default function Login() {
 
   return (
     <div>
-      <Header />
+      <Header
+        value={perfilHeader}
+      />
       {renderPerfilSection()}
       {renderSalvarButton()}
     </div>

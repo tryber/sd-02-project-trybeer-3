@@ -4,7 +4,9 @@ import Trybeer from '../../context';
 import '../../styles/Header.css';
 
 const Header = () => {
-  const { open, setOpen, page } = useContext(Trybeer);
+  const {
+    open, setOpen, page, perfilHeader,
+  } = useContext(Trybeer);
   const handleClick = () => setOpen(!open);
 
   return (
@@ -15,7 +17,10 @@ const Header = () => {
           menuClicked={handleClick}
           color="white"
         />
-        <h2>{page}</h2>
+        <h2>
+          {page,
+          perfilHeader}
+        </h2>
       </div>
     </div>
   );
