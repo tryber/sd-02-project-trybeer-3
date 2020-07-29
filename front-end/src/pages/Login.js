@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { postLogin } from '../services';
 import '../styles/Login.css';
 
+const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 const btnSemConta = () => (
   <Link to="/register">
     <div className="btn-sem-conta-div">
@@ -42,7 +44,7 @@ const renderLoginSection = (email, setEmail, senha, setSenha) => (
 const loginClick = async (email, senha) => {
   const data = await postLogin({ email, password: senha })
     .then((response) => response.data);
-  console.log(data);
+  localStorage.setItem('Token do usuário logado', data.token);
 };
 
 export default function Login() {
@@ -51,7 +53,6 @@ export default function Login() {
   const [senha, setSenha] = useState('');
 
   useEffect(() => {
-    const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (senha.length >= 6 && regexEmail.test(email)) {
       return setDisabled(false);
     }
@@ -60,7 +61,7 @@ export default function Login() {
 
   const renderLoginButton = () => (
     <div className="btn-login-div">
-      <Link to="/">
+      <Link to="/products">
         <button
           type="button"
           className="btn-login"
@@ -73,7 +74,6 @@ export default function Login() {
       </Link>
     </div>
   );
-
   return (
     <div>
       {renderLoginSection(email, setEmail, senha, setSenha)}
