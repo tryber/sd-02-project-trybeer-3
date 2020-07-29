@@ -13,7 +13,7 @@ const createOrder = async (req, res, next) => {
     const { id } = req.user;
     const { street, streetNumber, products } = req.body;
     const createdOrder = await newOrder(id, street, streetNumber, products);
-    const addProductOrder = await addProducts(products, createdOrder);
+    await addProducts(products, createdOrder);
     res.status(200).json({
       status: 'success',
     });

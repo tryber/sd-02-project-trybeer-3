@@ -5,7 +5,7 @@ const { authUser } = require('../controllers/authenticatorController');
 const router = express.Router();
 
 router
-  .route('/products')
+  .route('/')
   .get(getAllProducts);
 
 router
