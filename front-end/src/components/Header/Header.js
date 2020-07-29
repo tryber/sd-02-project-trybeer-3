@@ -5,7 +5,6 @@ import '../../styles/Header.css';
 
 const Header = () => {
   const { open, setOpen, page } = useContext(Trybeer);
-  console.log(open);
   const handleClick = () => setOpen(!open);
 
   return (
