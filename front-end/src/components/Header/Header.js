@@ -5,7 +5,7 @@ import '../../styles/Header.css';
 
 const Header = () => {
   const {
-    open, setOpen, page, perfilHeader,
+    open, setOpen, page,
   } = useContext(Trybeer);
   const handleClick = () => setOpen(!open);
 
@@ -18,8 +18,7 @@ const Header = () => {
           color="white"
         />
         <h2>
-          {page,
-          perfilHeader}
+          {page}
         </h2>
       </div>
     </div>
