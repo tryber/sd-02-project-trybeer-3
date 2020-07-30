@@ -26,7 +26,7 @@ const addProduct = (product, setCartProducts, setCartValue) => {
   return setCart(cart);
 };
 
-const removeProduct = ({ productId }, setCartProducts, setCartValue) => {
+const removeProduct = ({ productId }, setCartProducts) => {
   const cart = getCart();
 
   if (!cart[productId]) return;
@@ -41,7 +41,6 @@ const removeProduct = ({ productId }, setCartProducts, setCartValue) => {
   cart[productId] = undefined;
   setCartProducts(cart);
   setCart(cart);
-  return;
 };
 
 const getProductQuantity = ({ productId }, cart) => {
@@ -50,7 +49,6 @@ const getProductQuantity = ({ productId }, cart) => {
 };
 
 const AllProducts = () => {
-  const { setCartValue } = useContext(Trybeer);
   const [products, setProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState(getCart());
 
@@ -74,14 +72,14 @@ const AllProducts = () => {
             <div className="Product_selectors">
               <button
                 type="button"
-                onClick={() => addProduct(product, setCartProducts, setCartValue)}
+                onClick={() => addProduct(product, setCartProducts)}
               >
                 +
               </button>
               <p>{getProductQuantity(product, cartProducts)}</p>
               <button
                 type="button"
-                onClick={() => removeProduct(product, setCartProducts, setCartValue)}
+                onClick={() => removeProduct(product, setCartProducts)}
               >
                 -
               </button>
