@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PerfilCliente from './pages/PerfilCliente';
 import Products from './pages/Products';
+import MPedidosCliente from './pages/MPedidosCliente';
 import './App.css';
 
 const App = () => (
