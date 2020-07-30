@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import getCart from '../components/Utils/cart';
 import PropTypes from 'prop-types';
 import Trybeer from './index';
 
@@ -9,7 +10,7 @@ const ProviderTrybeer = ({ children }) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isSalesman, setIsSalesman] = useState(false);
-  const [cartValue, setCartValue] = useState('0.00');
+  const [cartProducts, setCartProducts] = useState(getCart);
 
   const toProvider = {
     open,
@@ -24,8 +25,8 @@ const ProviderTrybeer = ({ children }) => {
     setPassword,
     isSalesman,
     setIsSalesman,
-    cartValue,
-    setCartValue,
+    cartProducts,
+    setCartProducts,
   };
 
   return (

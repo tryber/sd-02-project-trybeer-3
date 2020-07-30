@@ -1,17 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { getProducts } from '../../services';
 import '../../styles/AllProducts.css';
+import getCart from '../Utils/cart';
 import Trybeer from '../../context';
-
-const getCart = () => {
-  const item = localStorage.getItem('cart');
-  if (!item) return {};
-  return JSON.parse(item);
-};
 
 const setCart = (value) => localStorage.setItem('cart', JSON.stringify(value));
 
-const addProduct = (product, setCartProducts, setCartValue) => {
+const addProduct = (product, setCartProducts) => {
   const { productId, name, price } = product;
   const cart = getCart();
 
@@ -38,7 +33,7 @@ const removeProduct = ({ productId }, setCartProducts) => {
     return;
   }
 
-  cart[productId] = undefined;
+  delete cart[productId];
   setCartProducts(cart);
   setCart(cart);
 };
@@ -50,7 +45,7 @@ const getProductQuantity = ({ productId }, cart) => {
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
-  const [cartProducts, setCartProducts] = useState(getCart());
+  const { cartProducts, setCartProducts } = useContext(Trybeer);
 
   useEffect(() => {
     getProducts()
