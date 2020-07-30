@@ -198,3 +198,32 @@ response
     "message": Mensagem do erro"
 }
 ```
+
+## GET localhost:3001/user/Orders
+
+Lembrar de passar o token no auth
+
+response
+{
+    "status": "success",
+    "orders": [
+        {
+            "orderId": 2,
+            "total": 15.39,
+            "day": "15",
+            "month": "11"
+        },
+        {
+            "orderId": 3,
+            "total": 10.98,
+            "day": "08",
+            "month": "12"
+        }
+    ]
+}
+
+{
+    "status": "failed",
+    "code": "Código do erro",
+    "message": Mensagem do erro"
+}

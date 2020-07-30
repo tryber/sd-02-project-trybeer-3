@@ -1,6 +1,8 @@
 const { getAllUsers, getByEmail, createUserModel, changeName,
   myOrders } = require('../models/usersModel');
 
+const months = require('./utils/months');
+
 const allFields = ['name', 'password', 'id', 'email', 'role'];
 const normalFields = ['name', 'email', 'password', 'role'];
 
@@ -25,7 +27,16 @@ const changeUserName = async (name, email) => {
 };
 
 const getOrders = async (id) => {
-  const orders = await myOrders(id);
+  let orders = await myOrders(id);
+  orders = orders.map(([orderId, date, total]) => ({ orderId, date, total }));
+  orders = orders.map(({ orderId, date, total }) => (
+    {
+      orderId,
+      total,
+      day: date.toUTCString().split(' ')[1],
+      month: months[date.toUTCString().split(' ')[2]],
+    }
+  ));
   return orders;
 };
 
