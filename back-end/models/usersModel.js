@@ -16,9 +16,18 @@ const changeName = async (name, email) => {
   return queryDb(query, [name, email]);
 };
 
+const myOrders = async (id) => {
+  const query = `SELECT * FROM Orders O
+  INNER JOIN Order_Products OP ON OP.order_id = O.order_id
+  INNER JOIN Products P ON P.product_id = OP.product_id
+  WHERE O.client_id=?;`;
+  return queryDb(query, [id]);
+};
+
 module.exports = {
   getAllUsers,
   getByEmail,
   createUserModel,
   changeName,
+  myOrders,
 };

@@ -1,4 +1,4 @@
-const { getUsers, createUser, changeUserName } = require('../services/usersService');
+const { getUsers, createUser, changeUserName, getOrders } = require('../services/usersService');
 const { validationFunc } = require('./utils/schemaValidator');
 
 const getAllUsers = async (_req, res) => {
@@ -37,8 +37,19 @@ const changeName = async (req, res, next) => {
   });
 };
 
+const myOrders = async (req, res) => {
+  const { id } = req.user;
+  console.log(id);
+  const orders = await getOrders(id);
+  res.status(200).json({
+    status: 'success',
+    orders,
+  });
+};
+
 module.exports = {
   getAllUsers,
   register,
   changeName,
+  myOrders,
 };

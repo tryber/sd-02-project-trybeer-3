@@ -1,4 +1,5 @@
-const { getAllUsers, getByEmail, createUserModel, changeName } = require('../models/usersModel');
+const { getAllUsers, getByEmail, createUserModel, changeName,
+  myOrders } = require('../models/usersModel');
 
 const allFields = ['name', 'password', 'id', 'email', 'role'];
 const normalFields = ['name', 'email', 'password', 'role'];
@@ -23,9 +24,15 @@ const changeUserName = async (name, email) => {
   return {};
 };
 
+const getOrders = async (id) => {
+  const orders = await myOrders(id);
+  return orders;
+};
+
 module.exports = {
   getUsers,
   getUser,
   createUser,
   changeUserName,
+  getOrders,
 };
