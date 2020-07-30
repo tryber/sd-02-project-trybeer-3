@@ -227,3 +227,20 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+
+## GET localhost:3001/user
+
+Lembrar de passar o token no auth
+
+response
+{
+    "status": "success",
+    "name": "Pedro",
+    "email": "pedro@gmail.com"
+}
+
+{
+    "status": "failed",
+    "code": "Código do erro",
+    "message": Mensagem do erro"
+}
