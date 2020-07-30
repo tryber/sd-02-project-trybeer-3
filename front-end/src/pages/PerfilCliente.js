@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { postLogin } from '../services';
-import '../styles/PerfilCliente.css';
+
+import '../styles/PerfilAdmin.css';
 
 const renderPerfilSection = (emailCliente, clientName) => (
   <div className="logincampo">
