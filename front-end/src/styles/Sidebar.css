@@ -8,6 +8,7 @@
   position: fixed;
   width: 30%;
   z-index: 0;
+  top: 0;
 }
 
 .Sidebar_All a {

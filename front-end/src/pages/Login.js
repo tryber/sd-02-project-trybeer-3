@@ -77,7 +77,7 @@ export default function Login() {
   }, [email, senha]);
 
   return (
-    <div>
+    <div className="Login_all">
       {renderLoginSection(email, setEmail, senha, setSenha)}
       {renderLoginButton(email, senha, disabled)}
       {btnSemConta()}

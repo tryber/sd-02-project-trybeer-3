@@ -4,12 +4,23 @@
   border-radius: 25px;
   display: flex;
   flex-direction: column;
+  height: 10%;
   justify-content: center;
+  margin: 1em;
   width: 35%;
+}
+
+.Product_only p {
+  font-size: 2vh;
 }
 
 .Product_only button {
   width: 35%;
+}
+
+.Products_img {
+  width: 60px;
+  height: 60px;
 }
 
 .AllProducts_father {
@@ -17,4 +28,5 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  margin-top: 14vh;
 }
