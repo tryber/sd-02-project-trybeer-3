@@ -1,9 +1,11 @@
 const { getSession } = require('../connection');
 
-const queryDb = async (query) => {
+const queryDb = async (query, params) => {
   const db = await getSession();
-  const sesions = await db.sql(query).execute();
-  return sesions.fetchAll();
+  const sessions = db.sql(query);
+  params.forEach((param) => sessions.bind(param));
+  const results = await sessions.execute();
+  return results.fetchAll();
 };
 
 module.exports = {

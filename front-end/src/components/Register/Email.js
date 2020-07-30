@@ -4,7 +4,7 @@ import Trybeer from '../../context';
 const InputEmail = () => {
   const { setEmailUser } = useContext(Trybeer);
   return (
-    <div>
+    <div className="Register_Inputs">
       <label htmlFor="InputEmail">Email</label>
       <input
         id="InputEmail"

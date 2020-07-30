@@ -1,7 +1,7 @@
-## POST localhost:3001/login
+## POST localhost:3001/user/login
 
 ```
-body: 
+body:
 {
     "email": "pedro@gmail.com",
     "password": "123456"
@@ -30,7 +30,7 @@ responses:
 
 ```
 
-## POST localhost:3001/register
+## POST localhost:3001/user/register
 
 ```
 body:
@@ -70,57 +70,68 @@ response:
         {
             "name": "Skol Lata 350ml",
             "productId": 1,
-            "price": 2.200000047683716
+            "price": 2.200000047683716,
+            "picture": "http://localhost:3001/images/Skol Lata 350ml.jpg"
         },
         {
             "name": "Heineken 600ml",
             "productId": 2,
-            "price": 7.5
+            "price": 7.5,
+            "picture": "http://localhost:3001/images/Heineken 600ml.jpg"
         },
         {
             "name": "Antarctica Pilsen 300ml",
             "productId": 3,
-            "price": 2.490000009536743
+            "price": 2.490000009536743,
+            "picture": "http://localhost:3001/images/Antarctica Pilsen 300ml.jpg"
         },
         {
             "name": "Brahma 600ml",
             "productId": 4,
-            "price": 7.5
+            "price": 7.5,
+            "picture": "http://localhost:3001/images/Brahma 600ml.jpg"
         },
         {
             "name": "Skol 269ml",
             "productId": 5,
-            "price": 2.190000057220459
+            "price": 2.190000057220459,
+            "picture": "http://localhost:3001/images/Skol 269ml.jpg"
         },
         {
             "name": "Skol Beats Senses 313ml",
             "productId": 6,
-            "price": 4.489999771118164
+            "price": 4.489999771118164,
+            "picture": "http://localhost:3001/images/Skol Beats Senses 313ml.jpg"
         },
         {
             "name": "Becks 330ml",
             "productId": 7,
-            "price": 4.989999771118164
+            "price": 4.989999771118164,
+            "picture": "http://localhost:3001/images/Becks 330ml.jpg"
         },
         {
             "name": "Brahma Duplo Malte 350ml",
             "productId": 8,
-            "price": 2.7899999618530273
+            "price": 2.7899999618530273,
+            "picture": "http://localhost:3001/images/Brahma Duplo Malte 350ml"
         },
         {
             "name": "Becks 600ml",
             "productId": 9,
-            "price": 8.890000343322754
+            "price": 8.890000343322754,
+            "picture": "http://localhost:3001/images/Becks 600ml"
         },
         {
             "name": "Skol Beats Senses 269ml",
             "productId": 10,
-            "price": 3.569999933242798
+            "price": 3.569999933242798,
+            "picture": "http://localhost:3001/images/Skol Beats Senses 269ml"
         },
         {
             "name": "Stella Artois 275ml",
             "productId": 11,
-            "price": 3.490000009536743
+            "price": 3.490000009536743,
+            "picture": "http://localhost:3001/images/Stella Artois 275ml"
         }
     ]
 }
@@ -133,13 +144,47 @@ response:
 
 ```
 
-## PATCH localhost:3001/profile
+## PATCH localhost:3001/user/profile
+
 ```
 req.body
 
+Lembrar de passar o token no auth
 {
     "name": "Pedro Henrique",
-    "email": "pedro@gmail.com" 
+}
+
+response
+{
+    "status": "success"
+}
+
+{
+    "status": "failed",
+    "code": "Código do erro",
+    "message": Mensagem do erro"
+}
+```
+
+## POST localhost:3001/products/checkout
+
+```
+req.body
+
+Lembrar de passar o token no auth
+{
+    "street": "rua 1",
+    "streetNumber": 12,
+    "products": [
+        {
+            "id": 1,
+            "quantity": 5
+        },
+        {
+            "id": 3,
+            "quantity": 7
+        }
+    ]
 }
 
 response

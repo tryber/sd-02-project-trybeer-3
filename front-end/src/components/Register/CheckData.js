@@ -9,7 +9,15 @@ const validPassword = /[0-9]{6,}/;
 
 const doRequest = async (obj, history) => {
   await postRegister(obj);
-  return history.push('/login');
+  localStorage.setItem(`${obj.name}_login`, JSON.stringify(obj));
+  return history.push('/products');
+};
+
+const counter = (setWrongData) => {
+  setWrongData(true);
+  setTimeout(() => {
+    setWrongData(false);
+  }, 3000);
 };
 
 const CheckData = () => {
@@ -29,7 +37,7 @@ const CheckData = () => {
       && validPassword.test(password)
       && validName.test(userName)
       ? doRequest(userObj, history)
-      : setWrongData(true)
+      : counter(setWrongData)
   );
 
   return (

@@ -5,8 +5,9 @@
   flex-direction: column;
   height: 100%;
   justify-content: space-around;
-  position: absolute;
+  position: fixed;
   width: 30%;
+  z-index: 0;
 }
 
 .Sidebar_All a {

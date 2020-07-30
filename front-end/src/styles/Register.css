@@ -1,0 +1,15 @@
+.Register_father {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 96vh;
+  justify-content: center;
+  width: auto;
+}
+
+.Register_Inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 3vh;
+  text-align: left;
+}

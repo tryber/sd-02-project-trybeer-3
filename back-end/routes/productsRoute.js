@@ -1,10 +1,15 @@
 const express = require('express');
-const { getAllProducts } = require('../controllers/productsController');
+const { getAllProducts, createOrder } = require('../controllers/productsController');
+const { authUser } = require('../controllers/authenticatorController');
 
 const router = express.Router();
 
 router
-  .route('/products')
-  .get(getAllProducts);
+  .route('/')
+  .get(authUser, getAllProducts);
+
+router
+  .route('/checkout')
+  .post(authUser, createOrder);
 
 module.exports = router;
