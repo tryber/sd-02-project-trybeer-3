@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import getCart from '../components/Utils/cart';
 import PropTypes from 'prop-types';
+import getCart from '../components/Utils/cart';
 import Trybeer from './index';
 
 const ProviderTrybeer = ({ children }) => {

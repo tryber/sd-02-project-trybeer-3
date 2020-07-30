@@ -15,7 +15,7 @@ const ShowCart = () => {
         return acc + calc;
       }, 0);
     setCartValue(priceCalc.toFixed(2));
-  }, [cartProducts])
+  }, [cartProducts]);
 
   return (
     <div className="ShowCart">
