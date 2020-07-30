@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import '../styles/PerfilAdmin.css';
+// import { postLogin } from '../services';
+import Header from '../components/Header/Header';
+import Sidebar from '../components/Sidebar/Sidebar';
+import Trybeer from '../context';
+import '../styles/PerfilCliente.css';
 
 const renderPerfilSection = (emailCliente, clientName) => (
-  <div className="logincampo">
+  <div className="profile-campo">
     <label htmlFor="email">Nome</label>
     <input
       id="name"
@@ -25,42 +28,47 @@ const renderPerfilSection = (emailCliente, clientName) => (
   </div>
 );
 
-const loginClick = async (emailCliente, clientName) => {
-  const data = await postLogin({ emailCliente, password })
-    .then((response) => response.data);
-  const clientName = localStorage.getItem('Token do usuário logado', data.name);
-  const clientMail = localStorage.getItem('Token do usuário logado', data.email);
+const getDados = () => {
+  const usuarioLogadoAtual = localStorage.getItem('Token do usuário logado');
+  console.log(usuarioLogadoAtual);
 };
 
 const renderSalvarButton = (email, senha, disabled) => (
-  <div className="btn-login-div">
+  <div className="btn-save-profile-div">
     <Link to="/products">
       <button
         type="button"
-        className="btn-login"
-        data-testid="signin-btn"
+        className="btn-save-profile"
+        data-testid="profile-save-btn"
         disabled={disabled}
-        onClick={() => loginClick(email, senha)}
       >
-        ENTRAR
+        Salvar
       </button>
     </Link>
   </div>
 );
 
 export default function Login() {
-  const [newClient, setNewClient] = useState('');
+  const { setPage } = useContext(Trybeer);
+  getDados();
+  useEffect(() => { setPage('Meu perfil'); }, []);
+  // const [newClient, setNewClient] = useState('');
 
-  useEffect(() => {
-    if (senha.length >= 6 && regexEmail.test(email)) {
-      return setDisabled(false);
-    }
-    return setDisabled(true);
-  }, [clientName]);
+  // useEffect(() => {
+  //   if (senha.length >= 6 && regexEmail.test(email)) {
+  //     return setDisabled(false);
+  //   }
+  //   return setDisabled(true);
+  // }, [clientName]);
 
   return (
     <div>
-      {renderPerfilSection(emailCliente)}
+      <Header />
+      <Sidebar />
+      <div className="div-page-body-perfil">
+        {renderPerfilSection()}
+        {renderSalvarButton()}
+      </div>
     </div>
   );
 }
