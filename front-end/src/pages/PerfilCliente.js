@@ -51,7 +51,7 @@ const renderSalvarButton = (email, senha, disabled) => (
 export default function Login() {
   const { setPage } = useContext(Trybeer);
   getDados();
-  useEffect(() => { setPage('Meu perfil')}, [])
+  useEffect(() => { setPage('Meu perfil') }, []);
   // const [newClient, setNewClient] = useState('');
 
   // useEffect(() => {
