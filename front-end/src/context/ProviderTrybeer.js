@@ -9,6 +9,7 @@ const ProviderTrybeer = ({ children }) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isSalesman, setIsSalesman] = useState(false);
+  const [cartValue, setCartValue] = useState('0.00');
 
   const toProvider = {
     open,
@@ -23,6 +24,8 @@ const ProviderTrybeer = ({ children }) => {
     setPassword,
     isSalesman,
     setIsSalesman,
+    cartValue,
+    setCartValue,
   };
 
   return (

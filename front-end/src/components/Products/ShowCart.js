@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import Trybeer from '../../context';
 
 const ShowCart = () => {
-  const [cartValue, setCartValue] = useState('0.00');
-  return(
-    <button>
-      {`Total: R$ ${cartValue} - Ver Carrinho`}
-    </button>
+  const { cartValue } = useContext(Trybeer);
+  return (
+    <div>
+      <button>
+        {`Total: R$ ${cartValue} - Ver Carrinho`}
+      </button>
+    </div>
   );
 };
 

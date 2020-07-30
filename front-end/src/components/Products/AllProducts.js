@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getProducts } from '../../services';
 import '../../styles/AllProducts.css';
+import Trybeer from '../../context';
 
 const getCart = () => {
   const item = localStorage.getItem('cart');
@@ -10,12 +11,12 @@ const getCart = () => {
 
 const setCart = (value) => localStorage.setItem('cart', JSON.stringify(value));
 
-const addProduct = (product, setCartProducts) => {
+const addProduct = (product, setCartProducts, setCartValue) => {
   const { productId, name, price } = product;
   const cart = getCart();
 
   if (cart[productId]) {
-    cart[productId].quantity++;
+    cart[productId].quantity += 1;
     setCartProducts(cart);
     return setCart(cart);
   }
@@ -25,20 +26,20 @@ const addProduct = (product, setCartProducts) => {
   return setCart(cart);
 };
 
-const removeProduct = ({ productId }, setCartProducts) => {
+const removeProduct = ({ productId }, setCartProducts, setCartValue) => {
   const cart = getCart();
 
   if (!cart[productId]) return;
 
   if (cart[productId].quantity > 1) {
-    cart[productId].quantity--;
+    cart[productId].quantity -= 1;
     setCartProducts(cart);
     return setCart(cart);
   }
 
   cart[productId] = undefined;
   setCartProducts(cart);
-  setCart(cart);
+  return setCart(cart);
 };
 
 const getProductQuantity = ({ productId }, cart) => {
@@ -47,6 +48,7 @@ const getProductQuantity = ({ productId }, cart) => {
 };
 
 const AllProducts = () => {
+  const { setCartValue } = useContext(Trybeer);
   const [products, setProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState(getCart());
 
@@ -64,15 +66,21 @@ const AllProducts = () => {
             className="Product_only"
             key={`${name} option`}
           >
-            <img className="Products_img" alt='show beer selection' src={picture} />
-            <p>{`R$ ${Number(price).toFixed(2)}`}</p>
+            <p className="Product_value">{`R$ ${Number(price).toFixed(2)}`}</p>
+            <img className="Products_img" alt="show beer selection" src={picture} />
             <p>{name}</p>
-            <div>
-              <button type="button" onClick={() => addProduct(product, setCartProducts)}>
+            <div className="Product_selectors">
+              <button
+                type="button"
+                onClick={() => addProduct(product, setCartProducts, setCartValue)}
+              >
                 +
               </button>
               <p>{getProductQuantity(product, cartProducts)}</p>
-              <button type="button" onClick={() => removeProduct(product, setCartProducts)}>
+              <button
+                type="button"
+                onClick={() => removeProduct(product, setCartProducts, setCartValue)}
+              >
                 -
               </button>
             </div>

@@ -8,8 +8,8 @@ import './App.css';
 const App = () => (
   <Router>
     <Switch>
-      <Route exact path='/'>
-        <Redirect to='/login' />
+      <Route exact path="/">
+        <Redirect to="/login" />
       </Route>
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />

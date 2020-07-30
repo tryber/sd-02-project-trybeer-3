@@ -14,13 +14,20 @@
   font-size: 2vh;
 }
 
+.Product_only .Product_value {
+  align-self: flex-start;
+  font-size: 1em;
+  font-weight: 700;
+  padding-left: 15px;
+}
+
 .Product_only button {
   width: 35%;
 }
 
 .Products_img {
-  width: 60px;
   height: 60px;
+  width: 60px;
 }
 
 .AllProducts_father {
@@ -29,4 +36,10 @@
   flex-flow: row wrap;
   justify-content: center;
   margin-top: 14vh;
+}
+
+.Product_selectors {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }

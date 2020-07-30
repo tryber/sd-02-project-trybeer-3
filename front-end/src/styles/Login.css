@@ -10,7 +10,7 @@
   top: 328px;
 }
 
-.logincampo>input {
+.logincampo > input {
   align-items: center;
   box-sizing: border-box;
   font-size: 25px;
@@ -66,8 +66,8 @@ button:disabled {
   height: 80vh;
 }
 
-@media only screen and ( max-width: 600px) {
-  .logincampo>input {
+@media only screen and ( max-width : 600px ) {
+  .logincampo > input {
     align-items: center;
     box-sizing: border-box;
     font-size: 25px;
