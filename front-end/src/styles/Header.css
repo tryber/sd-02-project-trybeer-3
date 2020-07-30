@@ -1,9 +1,9 @@
 .Menu_Sup_All {
   background-color: black;
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 1;
-  top: 0;
 }
 
 .Menu_Sup {

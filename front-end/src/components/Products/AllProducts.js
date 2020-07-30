@@ -34,12 +34,14 @@ const removeProduct = ({ productId }, setCartProducts, setCartValue) => {
   if (cart[productId].quantity > 1) {
     cart[productId].quantity -= 1;
     setCartProducts(cart);
-    return setCart(cart);
+    setCart(cart);
+    return;
   }
 
   cart[productId] = undefined;
   setCartProducts(cart);
-  return setCart(cart);
+  setCart(cart);
+  return;
 };
 
 const getProductQuantity = ({ productId }, cart) => {
