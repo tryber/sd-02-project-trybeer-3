@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import getCart from '../components/Utils/cart';
 import Trybeer from './index';
 
 const ProviderTrybeer = ({ children }) => {
@@ -9,6 +10,7 @@ const ProviderTrybeer = ({ children }) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isSalesman, setIsSalesman] = useState(false);
+  const [cartProducts, setCartProducts] = useState(getCart);
 
   const toProvider = {
     open,
@@ -23,6 +25,8 @@ const ProviderTrybeer = ({ children }) => {
     setPassword,
     isSalesman,
     setIsSalesman,
+    cartProducts,
+    setCartProducts,
   };
 
   return (
