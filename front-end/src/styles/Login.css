@@ -46,13 +46,24 @@ button:disabled {
 .btn-sem-conta {
   background: white;
   box-sizing: border-box;
-  font-size: 25px;
+  font-size: 20px;
   height: 59px;
   left: 554px;
   margin-top: 10px;
   text-decoration: none;
   top: 789px;
   width: 332px;
+}
+
+.btn-sem-conta:hover {
+  background: grey;
+  cursor: pointer;
+}
+
+.Login_all {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
 }
 
 @media only screen and ( max-width : 600px ) {
@@ -77,12 +88,12 @@ button:disabled {
   .btn-sem-conta {
     background: white;
     box-sizing: border-box;
-    font-size: 25px;
+    font-size: 20px;
     height: 59px;
     left: 554px;
     margin-top: 10px;
     text-decoration: none;
     top: 789px;
-    width: 280px;
+    width: 332px;
   }
 }
