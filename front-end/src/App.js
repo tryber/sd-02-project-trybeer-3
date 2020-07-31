@@ -4,7 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PerfilCliente from './pages/PerfilCliente';
 import Products from './pages/Products';
-import MPedidosCliente from './pages/MPedidosCliente';
+import MeusPedidosCliente from './pages/MeusPedidosCliente';
 import './App.css';
 
 const App = () => (
@@ -14,6 +14,7 @@ const App = () => (
       <Route exact path="/register" component={Register} />
       <Route path="/profile" component={PerfilCliente} />
       <Route exact path="/products" component={Products} />
+      <Route exact path="/orders" component={MeusPedidosCliente} />
     </Switch>
   </Router>
 );
