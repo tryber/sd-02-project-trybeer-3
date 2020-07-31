@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import { postLogin } from '../services';
 import Header from '../components/Header/Header';
@@ -50,8 +50,8 @@ const renderSalvarButton = (email, senha, disabled) => (
 
 export default function Login() {
   const { setPage } = useContext(Trybeer);
+  setPage('Meu perfil');
   getDados();
-  useEffect(() => { setPage('Meu perfil'); }, []);
   // const [newClient, setNewClient] = useState('');
 
   // useEffect(() => {

@@ -6,12 +6,15 @@ import Sidebar from '../components/Sidebar/Sidebar';
 
 export default function MeusPedidosCliente() {
   const { setPage } = useContext(Trybeer);
+  setPage('Meus Pedidos');
 
-  useEffect(() => { setPage('Meus Pedidos'); }, []);
-  useEffect(async () => {
-    const token = localStorage.getItem('Token do usuário logado');
-    const orders = await getOrders(token);
-    console.log(orders);
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const token = localStorage.getItem('Token do usuário logado');
+      const orders = await getOrders(token);
+      console.log(orders);
+    };
+    fetchOrders();
   }, []);
 
   return (
