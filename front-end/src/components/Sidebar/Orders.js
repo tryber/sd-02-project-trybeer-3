@@ -16,6 +16,6 @@ const ButtonOrders = () => {
       Meus Pedidos
     </button>
   );
-}
+};
 
 export default ButtonOrders;
