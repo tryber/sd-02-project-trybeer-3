@@ -1,15 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { changePage } from '../Utils/cart';
+import Trybeer from '../../context';
 
-const ButtonOrders = () => (
-  <Link to="/orders">
+const ButtonOrders = () => {
+  const { setOpen } = useContext(Trybeer);
+  const history = useHistory();
+
+  return (
     <button
       type="button"
       className="Sidebar_Button"
+      onClick={() => changePage(setOpen, history, '/orders')}
     >
       Meus Pedidos
     </button>
-  </Link>
-);
+  );
+};
 
 export default ButtonOrders;
