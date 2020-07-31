@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllUsers, register, changeName, myOrders,
-  getUser, orderDetails } = require('../controllers/usersController');
+  getUser, orderDetails, allOrders } = require('../controllers/usersController');
 const { login, authUser } = require('../controllers/authenticatorController');
 
 const router = express.Router();
@@ -28,6 +28,10 @@ router
 router
   .route('/orders')
   .get(authUser, myOrders);
+
+router
+  .route('/admin/orders')
+  .get(authUser, allOrders);
 
 router
   .route('/orders/:id')

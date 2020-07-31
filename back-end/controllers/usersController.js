@@ -1,4 +1,5 @@
-const { getUsers, createUser, changeUserName, getOrders, getOrderDetail } = require('../services/usersService');
+const { getUsers, createUser, changeUserName, getOrders, getAllOrders,
+  getOrderDetail } = require('../services/usersService');
 const { validationFunc } = require('./utils/schemaValidator');
 
 const getAllUsers = async (_req, res) => {
@@ -67,6 +68,16 @@ const orderDetails = async (req, res, next) => {
   });
 };
 
+const allOrders = async (req, res, next) => {
+  const { role } = req.user;
+  if (role !== 'admin') return next({ code: 'unauthorized', message: 'User not alowed' });
+  const orders = await getAllOrders();
+  res.status(200).json({
+    status: 'success',
+    orders,
+  });
+};
+
 module.exports = {
   getAllUsers,
   register,
@@ -74,4 +85,5 @@ module.exports = {
   myOrders,
   getUser,
   orderDetails,
+  allOrders,
 };

@@ -1,5 +1,5 @@
 const { getAllUsers, getByEmail, createUserModel, changeName,
-  myOrders, orderDetail } = require('../models/usersModel');
+  myOrders, orderDetail, allOrders } = require('../models/usersModel');
 
 const months = require('./utils/months');
 
@@ -26,18 +26,22 @@ const changeUserName = async (name, email) => {
   return {};
 };
 
+const adjustOrders = (orders) => orders
+  .map(([orderId, date, total, deliver]) => ({ orderId, date, total, deliver }))
+  .map(({ orderId, date, total, deliver }) => (
+    {
+      orderId,
+      total,
+      day: date.toUTCString().split(' ')[1],
+      month: months[date.toUTCString().split(' ')[2]],
+      deliver,
+    }
+  ));
+
 const getOrders = async (id) => {
-  const orders = await myOrders(id);
-  return orders
-    .map(([orderId, date, total]) => ({ orderId, date, total }))
-    .map(({ orderId, date, total }) => (
-      {
-        orderId,
-        total,
-        day: date.toUTCString().split(' ')[1],
-        month: months[date.toUTCString().split(' ')[2]],
-      }
-    ));
+  const completeOrders = await myOrders(id);
+  return adjustOrders(completeOrders)
+    .map(({ orderId, day, month, total }) => ({ orderId, day, month, total }));
 };
 
 const getOrderDetail = async (id, clientID) => {
@@ -56,6 +60,12 @@ const getOrderDetail = async (id, clientID) => {
     }), { products: [], total: 0 });
 };
 
+const getAllOrders = async () => {
+  const ordersAdmin = await allOrders();
+  return adjustOrders(ordersAdmin)
+    .map(({ orderId, day, month, total, deliver }) => ({ orderId, day, month, total, deliver }));
+};
+
 module.exports = {
   getUsers,
   getUser,
@@ -63,4 +73,5 @@ module.exports = {
   changeUserName,
   getOrders,
   getOrderDetail,
+  getAllOrders,
 };

@@ -279,3 +279,41 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+
+## localhost:3001/user/admin/orders
+
+Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
+
+response
+{
+    "status": "success",
+    "orders": [
+        {
+            "orderId": 1,
+            "day": "15",
+            "month": "04",
+            "total": 21.86,
+            "deliver": 1
+        },
+        {
+            "orderId": 2,
+            "day": "15",
+            "month": "11",
+            "total": 15.39,
+            "deliver": 1
+        },
+        {
+            "orderId": 3,
+            "day": "08",
+            "month": "12",
+            "total": 10.98,
+            "deliver": 0
+        }
+    ]
+}
+
+{
+    "status": "failed",
+    "code": "Código do erro",
+    "message": Mensagem do erro"
+}

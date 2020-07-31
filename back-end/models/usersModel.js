@@ -34,6 +34,16 @@ const orderDetail = async (id, clientID) => {
   return queryDb(query, [id, clientID]);
 };
 
+const allOrders = async () => {
+  const query = `SELECT O.order_id, DATE(AVG(O.order_date)),
+  ROUND(SUM(quantity * product_price), 2), ROUND(AVG(O.delivered), 0)
+  FROM Orders O
+  INNER JOIN Order_Products OP ON OP.order_id = O.order_id
+  INNER JOIN Products P ON P.product_id = OP.product_id
+  GROUP BY O.order_id;`;
+  return queryDb(query, []);
+};
+
 module.exports = {
   getAllUsers,
   getByEmail,
@@ -41,4 +51,5 @@ module.exports = {
   changeName,
   myOrders,
   orderDetail,
+  allOrders,
 };
