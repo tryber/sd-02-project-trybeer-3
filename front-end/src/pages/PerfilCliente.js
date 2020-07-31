@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
@@ -27,9 +27,7 @@ const renderPerfilSection = (emailCliente, clientName) => (
   </div>
 );
 
-const getDados = () => {
-  return localStorage.getItem('Token do usuário logado');
-};
+const getDados = () => localStorage.getItem('Token do usuário logado');
 
 const renderSalvarButton = (email, senha, disabled) => (
   <div className="btn-save-profile-div">
@@ -51,7 +49,7 @@ const PerfilCliente = () => {
 
   useEffect(() => {
     setPage('Meu perfil');
-  }, [setPage])
+  }, [setPage]);
 
   getDados();
 
