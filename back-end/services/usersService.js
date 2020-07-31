@@ -26,16 +26,19 @@ const changeUserName = async (name, email) => {
   return {};
 };
 
-const getOrders = async (id) => myOrders(id)
-  .map(([orderId, date, total]) => ({ orderId, date, total }))
-  .map(({ orderId, date, total }) => (
-    {
-      orderId,
-      total,
-      day: date.toUTCString().split(' ')[1],
-      month: months[date.toUTCString().split(' ')[2]],
-    }
-  ));
+const getOrders = async (id) => {
+  const orders = await myOrders(id);
+  return orders
+    .map(([orderId, date, total]) => ({ orderId, date, total }))
+    .map(({ orderId, date, total }) => (
+      {
+        orderId,
+        total,
+        day: date.toUTCString().split(' ')[1],
+        month: months[date.toUTCString().split(' ')[2]],
+      }
+    ));
+};
 
 const getOrderDetail = async (id, clientID) => {
   const order = await orderDetail(id, clientID);
