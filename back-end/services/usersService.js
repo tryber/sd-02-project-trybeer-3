@@ -43,7 +43,17 @@ const getOrders = async (id) => {
 const getOrderDetail = async (id, clientID) => {
   const order = await orderDetail(id, clientID);
   if (!order.length) return { error: true };
-  return order;
+  return order
+    .map(([orderId, , , , date, , , , qty, , , name, price]) => ({
+      orderId, date, qty, name, price,
+    }))
+    .reduce((prev, { orderId, date, name, price, qty }) => ({
+      orderId,
+      day: new Date(date).getUTCDate(),
+      month: new Date(date).getUTCMonth() + 1,
+      products: [...prev.products, { name, qty, price, total: qty * price }],
+      total: prev.total + qty * price,
+    }), { products: [], total: 0 });
 };
 
 module.exports = {
