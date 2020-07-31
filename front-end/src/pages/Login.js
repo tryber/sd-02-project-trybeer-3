@@ -42,21 +42,34 @@ const renderLoginSection = (email, setEmail, senha, setSenha) => (
   </div>
 );
 
-const loginClick = async (email, senha, history) => {
-  const data = await postLogin({ email, password: senha })
-    .then((response) => response.data);
-  localStorage.setItem('Token do usuário logado', data.token);
-  return history.push('/products');
+const loginClick = async (email, senha, history, setServerError) => {
+  return await postLogin({ email, password: senha })
+    .then(({ data }) => {
+      localStorage.setItem('user', JSON.stringify({
+        name: data.name,
+        email: data.email,
+        token: data.token,
+        role: data.role,
+      }));
+      history.push('/products');
+    })
+    .catch(({ response: { data } }) => {
+      setServerError(data.message);
+
+      setTimeout(() => {
+        setServerError('');
+      }, 2000);
+    });
 };
 
-const renderLoginButton = (email, senha, disabled, history) => (
+const renderLoginButton = (email, senha, disabled, history, setServerError) => (
   <div className="btn-login-div">
     <button
       type="button"
       className="btn-login"
       data-testid="signin-btn"
       disabled={disabled}
-      onClick={() => loginClick(email, senha, history)}
+      onClick={() => loginClick(email, senha, history, setServerError)}
     >
       ENTRAR
       </button>
@@ -67,6 +80,7 @@ export default function Login() {
   const [disabled, setDisabled] = useState(true);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [serverError, setServerError] = useState('');
   const history = useHistory();
 
   useEffect(() => {
@@ -79,8 +93,9 @@ export default function Login() {
   return (
     <div className="Login_all">
       {renderLoginSection(email, setEmail, senha, setSenha)}
-      {renderLoginButton(email, senha, disabled, history)}
+      {renderLoginButton(email, senha, disabled, history, setServerError)}
       {btnSemConta()}
+      {serverError && <p className="Login_message">{serverError}</p>}
     </div>
   );
 }

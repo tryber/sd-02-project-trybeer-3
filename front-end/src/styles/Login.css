@@ -64,6 +64,16 @@ button:disabled {
   display: flex;
   flex-direction: column;
   height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login_message {
+  position: fixed;
+  bottom: 0;
+  justify-content: center;
+  font-size: x-large;
+  font-weight: 700;
 }
 
 @media only screen and ( max-width : 600px ) {
