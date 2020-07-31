@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllUsers, register, changeName, myOrders,
-  getUser } = require('../controllers/usersController');
+  getUser, orderDetails } = require('../controllers/usersController');
 const { login, authUser } = require('../controllers/authenticatorController');
 
 const router = express.Router();
@@ -28,5 +28,9 @@ router
 router
   .route('/orders')
   .get(authUser, myOrders);
+
+router
+  .route('/orders/:id')
+  .get(authUser, orderDetails);
 
 module.exports = router;

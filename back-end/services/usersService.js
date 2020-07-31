@@ -1,5 +1,5 @@
 const { getAllUsers, getByEmail, createUserModel, changeName,
-  myOrders } = require('../models/usersModel');
+  myOrders, orderDetail } = require('../models/usersModel');
 
 const months = require('./utils/months');
 
@@ -40,10 +40,17 @@ const getOrders = async (id) => {
   return orders;
 };
 
+const getOrderDetail = async (id, clientID) => {
+  const order = await orderDetail(id, clientID);
+  if (!order.length) return { error: true };
+  return order;
+};
+
 module.exports = {
   getUsers,
   getUser,
   createUser,
   changeUserName,
   getOrders,
+  getOrderDetail,
 };
