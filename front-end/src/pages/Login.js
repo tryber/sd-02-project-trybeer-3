@@ -43,7 +43,7 @@ const renderLoginSection = (email, setEmail, senha, setSenha) => (
 );
 
 const loginClick = async (email, senha, history, setServerError) => {
-  return await postLogin({ email, password: senha })
+  await postLogin({ email, password: senha })
     .then(({ data }) => {
       localStorage.setItem('user', JSON.stringify({
         name: data.name,
@@ -72,7 +72,7 @@ const renderLoginButton = (email, senha, disabled, history, setServerError) => (
       onClick={() => loginClick(email, senha, history, setServerError)}
     >
       ENTRAR
-      </button>
+    </button>
   </div>
 );
 
@@ -83,7 +83,7 @@ export default function Login() {
   const [serverError, setServerError] = useState('');
   const history = useHistory();
 
-  if(localStorage.getItem('user')) history.push('/products');
+  if (localStorage.getItem('user')) history.push('/products');
 
   useEffect(() => {
     if (senha.length >= 6 && regexEmail.test(email)) {

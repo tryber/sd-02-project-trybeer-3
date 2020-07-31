@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Trybeer from '../../context';
 import { useHistory } from 'react-router-dom';
 import { changePage } from '../Utils/cart';
+import Trybeer from '../../context';
 
 const ButtonOrders = () => {
   const { setOpen } = useContext(Trybeer);
