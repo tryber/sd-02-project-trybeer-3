@@ -6,7 +6,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(authUser, getAllProducts);
+  .get(getAllProducts);
 
 router
   .route('/checkout')
