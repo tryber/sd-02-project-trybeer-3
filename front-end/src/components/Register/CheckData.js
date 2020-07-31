@@ -9,7 +9,7 @@ const validPassword = /[0-9]{6,}/;
 
 const doRequest = async (obj, history) => {
   await postRegister(obj);
-  localStorage.setItem(`${obj.name}_login`, JSON.stringify(obj));
+  localStorage.setItem('user', JSON.stringify(obj));
   return history.push('/products');
 };
 

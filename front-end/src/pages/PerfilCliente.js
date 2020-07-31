@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { postLogin } from '../services';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Trybeer from '../context';
@@ -28,10 +27,7 @@ const renderPerfilSection = (emailCliente, clientName) => (
   </div>
 );
 
-const getDados = () => {
-  const usuarioLogadoAtual = localStorage.getItem('Token do usuário logado');
-  console.log(usuarioLogadoAtual);
-};
+const getDados = () => localStorage.getItem('Token do usuário logado');
 
 const renderSalvarButton = (email, senha, disabled) => (
   <div className="btn-save-profile-div">
@@ -48,18 +44,14 @@ const renderSalvarButton = (email, senha, disabled) => (
   </div>
 );
 
-export default function Login() {
+const PerfilCliente = () => {
   const { setPage } = useContext(Trybeer);
-  setPage('Meu perfil');
-  getDados();
-  // const [newClient, setNewClient] = useState('');
 
-  // useEffect(() => {
-  //   if (senha.length >= 6 && regexEmail.test(email)) {
-  //     return setDisabled(false);
-  //   }
-  //   return setDisabled(true);
-  // }, [clientName]);
+  useEffect(() => {
+    setPage('Meu perfil');
+  }, [setPage]);
+
+  getDados();
 
   return (
     <div>
@@ -71,4 +63,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default PerfilCliente;
