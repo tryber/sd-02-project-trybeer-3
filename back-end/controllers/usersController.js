@@ -1,4 +1,4 @@
-const { getUsers, createUser, changeUserName } = require('../services/usersService');
+const { getUsers, createUser, changeUserName, getOrders } = require('../services/usersService');
 const { validationFunc } = require('./utils/schemaValidator');
 
 const getAllUsers = async (_req, res) => {
@@ -6,6 +6,15 @@ const getAllUsers = async (_req, res) => {
   res.status(200).json({
     status: 'success',
     users,
+  });
+};
+
+const getUser = async (req, res) => {
+  const { name, email } = req.user;
+  res.status(200).json({
+    status: 'success',
+    name,
+    email,
   });
 };
 
@@ -37,8 +46,19 @@ const changeName = async (req, res, next) => {
   });
 };
 
+const myOrders = async (req, res) => {
+  const { id } = req.user;
+  const orders = await getOrders(id);
+  res.status(200).json({
+    status: 'success',
+    orders,
+  });
+};
+
 module.exports = {
   getAllUsers,
   register,
   changeName,
+  myOrders,
+  getUser,
 };
