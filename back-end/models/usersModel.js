@@ -26,10 +26,19 @@ const myOrders = async (id) => {
   return queryDb(query, [id]);
 };
 
+const orderDetail = async (id, clientID) => {
+  const query = `SELECT * FROM Orders O
+    INNER JOIN Order_Products OP ON OP.order_id = O.order_id
+    INNER JOIN Products P ON P.product_id = OP.product_id
+    WHERE O.order_id=? AND client_id=?;`;
+  return queryDb(query, [id, clientID]);
+};
+
 module.exports = {
   getAllUsers,
   getByEmail,
   createUserModel,
   changeName,
   myOrders,
+  orderDetail,
 };
