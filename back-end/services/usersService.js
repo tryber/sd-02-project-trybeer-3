@@ -52,7 +52,7 @@ const getOrderDetail = async (id, clientID) => {
       day: new Date(date).getUTCDate(),
       month: new Date(date).getUTCMonth() + 1,
       products: [...prev.products, { name, qty, price, total: qty * price }],
-      total: prev.total + qty * price,
+      total: prev.total + (qty * price),
     }), { products: [], total: 0 });
 };
 
