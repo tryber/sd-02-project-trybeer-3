@@ -10,7 +10,7 @@ const Products = () => {
 
   useEffect(() => {
     setPage('Produtos');
-  }, [setPage])
+  }, [setPage]);
 
   return (
     <div>
