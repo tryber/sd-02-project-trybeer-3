@@ -1,21 +1,17 @@
 import React, { useContext } from 'react';
 import Trybeer from '../../context';
 import { useHistory } from 'react-router-dom';
+import { changePage } from '../Utils/cart';
 
 const ButtonOrders = () => {
   const { setOpen } = useContext(Trybeer);
   const history = useHistory();
 
-  const changePage = () => {
-    setOpen(false);
-    history.push('/orders');
-  };
-
   return (
     <button
       type="button"
       className="Sidebar_Button"
-      onClick={() => changePage()}
+      onClick={() => changePage(setOpen, history, '/orders')}
     >
       Meus Pedidos
     </button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { getProducts } from '../../services';
 import '../../styles/AllProducts.css';
-import getCart from '../Utils/cart';
+import { getCart } from '../Utils/cart';
 import Trybeer from '../../context';
 
 const setCart = (value) => localStorage.setItem('cart', JSON.stringify(value));

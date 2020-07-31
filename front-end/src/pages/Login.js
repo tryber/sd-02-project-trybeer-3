@@ -83,6 +83,8 @@ export default function Login() {
   const [serverError, setServerError] = useState('');
   const history = useHistory();
 
+  if(localStorage.getItem('user')) history.push('/products');
+
   useEffect(() => {
     if (senha.length >= 6 && regexEmail.test(email)) {
       return setDisabled(false);
