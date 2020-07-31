@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { postLogin } from '../services';
 import '../styles/Login.css';
 
@@ -42,25 +42,24 @@ const renderLoginSection = (email, setEmail, senha, setSenha) => (
   </div>
 );
 
-const loginClick = async (email, senha) => {
+const loginClick = async (email, senha, history) => {
   const data = await postLogin({ email, password: senha })
     .then((response) => response.data);
   localStorage.setItem('Token do usuário logado', data.token);
+  return history.push('/products');
 };
 
-const renderLoginButton = (email, senha, disabled) => (
+const renderLoginButton = (email, senha, disabled, history) => (
   <div className="btn-login-div">
-    <Link to="/products">
-      <button
-        type="button"
-        className="btn-login"
-        data-testid="signin-btn"
-        disabled={disabled}
-        onClick={() => loginClick(email, senha)}
-      >
-        ENTRAR
+    <button
+      type="button"
+      className="btn-login"
+      data-testid="signin-btn"
+      disabled={disabled}
+      onClick={() => loginClick(email, senha, history)}
+    >
+      ENTRAR
       </button>
-    </Link>
   </div>
 );
 
@@ -68,6 +67,7 @@ export default function Login() {
   const [disabled, setDisabled] = useState(true);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const history = useHistory();
 
   useEffect(() => {
     if (senha.length >= 6 && regexEmail.test(email)) {
@@ -77,9 +77,9 @@ export default function Login() {
   }, [email, senha]);
 
   return (
-    <div>
+    <div className="Login_all">
       {renderLoginSection(email, setEmail, senha, setSenha)}
-      {renderLoginButton(email, senha, disabled)}
+      {renderLoginButton(email, senha, disabled, history)}
       {btnSemConta()}
     </div>
   );
