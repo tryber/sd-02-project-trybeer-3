@@ -24,7 +24,7 @@
   font-size: 2vh;
   height: auto;
   text-decoration: none;
-  width: 100%;
+  width: 95%;
 }
 
 .Sidebar_Button:hover {
@@ -46,5 +46,6 @@
 }
 
 .Sidebar_Exit {
-  width: 80%;
+  text-align: center;
+  width: 100%;
 }

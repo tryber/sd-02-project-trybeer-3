@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Trybeer from '../../context';
 
 const ButtonExit = () => {
+  const { setOpen } = useContext(Trybeer);
   const history = useHistory();
 
   const exitAndRedirect = () => {
     localStorage.clear();
+    setOpen(false);
     return history.push('/login');
   };
 
