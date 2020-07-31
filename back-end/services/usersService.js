@@ -26,10 +26,9 @@ const changeUserName = async (name, email) => {
   return {};
 };
 
-const getOrders = async (id) => {
-  let orders = await myOrders(id);
-  orders = orders.map(([orderId, date, total]) => ({ orderId, date, total }));
-  orders = orders.map(({ orderId, date, total }) => (
+const getOrders = async (id) => myOrders(id)
+  .map(([orderId, date, total]) => ({ orderId, date, total }))
+  .map(({ orderId, date, total }) => (
     {
       orderId,
       total,
@@ -37,8 +36,6 @@ const getOrders = async (id) => {
       month: months[date.toUTCString().split(' ')[2]],
     }
   ));
-  return orders;
-};
 
 const getOrderDetail = async (id, clientID) => {
   const order = await orderDetail(id, clientID);
