@@ -244,3 +244,38 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+
+## GET localhost:3001/user/orders/:id
+
+Lembrar de passar o token no auth
+
+response
+{
+    "status": "success",
+    "order": {
+        "orderId": 2,
+        "day": 15,
+        "month": 10,
+        "products": [
+            {
+                "name": "Skol Lata 350ml",
+                "qty": 6,
+                "price": 2.200000047683716,
+                "total": 13.200000286102295
+            },
+            {
+                "name": "Skol 269ml",
+                "qty": 1,
+                "price": 2.190000057220459,
+                "total": 2.190000057220459
+            }
+        ],
+        "total": 15.390000343322754
+    }
+}
+
+{
+    "status": "failed",
+    "code": "Código do erro",
+    "message": Mensagem do erro"
+}
