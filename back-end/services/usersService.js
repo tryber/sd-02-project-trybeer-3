@@ -1,7 +1,7 @@
-const { getAllUsers, getByEmail, createUserModel, changeName,
+const { getAllUsers, getByEmail, createUserModel, changeName, getOrder,
   myOrders, orderDetail, allOrders } = require('../models/usersModel');
 
-const months = require('./utils/months');
+const { adjustOrders, adjustOrder, groupByID } = require('./utils/adjustOrders');
 
 const allFields = ['name', 'password', 'id', 'email', 'role'];
 const normalFields = ['name', 'email', 'password', 'role'];
@@ -26,18 +26,6 @@ const changeUserName = async (name, email) => {
   return {};
 };
 
-const adjustOrders = (orders) => orders
-  .map(([orderId, date, total, deliver]) => ({ orderId, date, total, deliver }))
-  .map(({ orderId, date, total, deliver }) => (
-    {
-      orderId,
-      total,
-      day: date.toUTCString().split(' ')[1],
-      month: months[date.toUTCString().split(' ')[2]],
-      deliver,
-    }
-  ));
-
 const getOrders = async (id) => {
   const completeOrders = await myOrders(id);
   return adjustOrders(completeOrders)
@@ -47,23 +35,19 @@ const getOrders = async (id) => {
 const getOrderDetail = async (id, clientID) => {
   const order = await orderDetail(id, clientID);
   if (!order.length) return { error: true };
-  return order
-    .map(([orderId, , , , date, , , , qty, , , name, price]) => ({
-      orderId, date, qty, name, price,
-    }))
-    .reduce((prev, { orderId, date, name, price, qty }) => ({
-      orderId,
-      day: new Date(date).getUTCDate(),
-      month: new Date(date).getUTCMonth() + 1,
-      products: [...prev.products, { name, qty, price, total: qty * price }],
-      total: prev.total + (qty * price),
-    }), { products: [], total: 0 });
+  const { deliver, ...orderDetailed } = adjustOrder(order);
+  return orderDetailed;
 };
 
 const getAllOrders = async () => {
   const ordersAdmin = await allOrders();
-  return adjustOrders(ordersAdmin)
-    .map(({ orderId, day, month, total, deliver }) => ({ orderId, day, month, total, deliver }));
+  return groupByID(ordersAdmin);
+};
+
+const getOrderComplete = async (id) => {
+  const order = await getOrder(id);
+  if (!order.length) return { error: true };
+  return groupByID(order);
 };
 
 module.exports = {
@@ -74,4 +58,5 @@ module.exports = {
   getOrders,
   getOrderDetail,
   getAllOrders,
+  getOrderComplete,
 };

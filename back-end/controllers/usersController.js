@@ -1,4 +1,4 @@
-const { getUsers, createUser, changeUserName, getOrders, getAllOrders,
+const { getUsers, createUser, changeUserName, getOrders, getAllOrders, getOrderComplete,
   getOrderDetail } = require('../services/usersService');
 const { validationFunc } = require('./utils/schemaValidator');
 
@@ -78,6 +78,19 @@ const allOrders = async (req, res, next) => {
   });
 };
 
+const adminOrderDetail = async (req, res, next) => {
+  const { role } = req.user;
+  const { id } = req.params;
+  if (role !== 'admin') return next({ code: 'unauthorized', message: 'User not alowed' });
+  const order = await getOrderComplete(id);
+  if (order.error) return next({ code: 'not_found', message: 'Wrong ID' });
+
+  res.status(200).json({
+    status: 'success',
+    order,
+  });
+};
+
 module.exports = {
   getAllUsers,
   register,
@@ -86,4 +99,5 @@ module.exports = {
   getUser,
   orderDetails,
   allOrders,
+  adminOrderDetail,
 };

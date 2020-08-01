@@ -290,24 +290,114 @@ response
     "orders": [
         {
             "orderId": 1,
-            "day": "15",
-            "month": "04",
-            "total": 21.86,
+            "adress": "Rua 1, 22",
+            "day": 15,
+            "month": 4,
+            "products": [
+                {
+                    "name": "Skol Lata 350ml",
+                    "qty": 2,
+                    "price": 2.200000047683716,
+                    "total": 4.400000095367432
+                },
+                {
+                    "name": "Antarctica Pilsen 300ml",
+                    "qty": 4,
+                    "price": 2.490000009536743,
+                    "total": 9.960000038146973
+                },
+                {
+                    "name": "Brahma 600ml",
+                    "qty": 1,
+                    "price": 7.5,
+                    "total": 7.5
+                }
+            ],
+            "total": 21.860000133514404,
             "deliver": 1
         },
         {
             "orderId": 2,
-            "day": "15",
-            "month": "11",
-            "total": 15.39,
+            "adress": "Rua 2, 820",
+            "day": 15,
+            "month": 11,
+            "products": [
+                {
+                    "name": "Skol Lata 350ml",
+                    "qty": 6,
+                    "price": 2.200000047683716,
+                    "total": 13.200000286102295
+                },
+                {
+                    "name": "Skol 269ml",
+                    "qty": 1,
+                    "price": 2.190000057220459,
+                    "total": 2.190000057220459
+                }
+            ],
+            "total": 15.390000343322754,
             "deliver": 1
         },
         {
             "orderId": 3,
-            "day": "08",
-            "month": "12",
-            "total": 10.98,
+            "adress": "Rua 3, 52",
+            "day": 8,
+            "month": 12,
+            "products": [
+                {
+                    "name": "Skol Lata 350ml",
+                    "qty": 3,
+                    "price": 2.200000047683716,
+                    "total": 6.6000001430511475
+                },
+                {
+                    "name": "Skol 269ml",
+                    "qty": 2,
+                    "price": 2.190000057220459,
+                    "total": 4.380000114440918
+                }
+            ],
+            "total": 10.980000257492065,
             "deliver": 0
+        }
+    ]
+}
+
+{
+    "status": "failed",
+    "code": "Código do erro",
+    "message": Mensagem do erro"
+}
+
+## localhost:3001/user/admin/order/:id
+
+Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
+
+response
+{
+    "status": "success",
+    "order": [
+        {
+            "orderId": 2,
+            "adress": "Rua 2, 820",
+            "day": 15,
+            "month": 11,
+            "products": [
+                {
+                    "name": "Skol Lata 350ml",
+                    "qty": 6,
+                    "price": 2.200000047683716,
+                    "total": 13.200000286102295
+                },
+                {
+                    "name": "Skol 269ml",
+                    "qty": 1,
+                    "price": 2.190000057220459,
+                    "total": 2.190000057220459
+                }
+            ],
+            "total": 15.390000343322754,
+            "deliver": 1
         }
     ]
 }
