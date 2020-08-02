@@ -204,6 +204,8 @@ response
 Lembrar de passar o token no auth
 
 response
+
+```
 {
     "status": "success",
     "orders": [
@@ -227,12 +229,15 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+```
 
 ## GET localhost:3001/user
 
 Lembrar de passar o token no auth
 
 response
+
+```
 {
     "status": "success",
     "name": "Pedro",
@@ -244,12 +249,15 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+```
 
-## GET localhost:3001/user/orders/:id
+## GET localhost:3001/orders/:id
 
 Lembrar de passar o token no auth
 
 response
+
+```
 {
     "status": "success",
     "order": {
@@ -279,12 +287,15 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+```
 
-## localhost:3001/user/admin/orders
+## localhost:3001/orders/admin
 
 Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
 
 response
+
+```
 {
     "status": "success",
     "orders": [
@@ -368,12 +379,15 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+```
 
-## localhost:3001/user/admin/order/:id
+## localhost:3001/orders/admin/2
 
 Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
 
 response
+
+```
 {
     "status": "success",
     "order": [
@@ -407,3 +421,22 @@ response
     "code": "Código do erro",
     "message": Mensagem do erro"
 }
+```
+
+## localhost:3001/orders/admin/:orderId/delivered
+
+Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
+
+response
+
+```
+{
+    "status": "success"
+}
+
+{
+    "status": "failed",
+    "code": "Código do erro",
+    "message": Mensagem do erro"
+}
+```

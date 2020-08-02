@@ -30,14 +30,13 @@ const adjustOrder = (order) => order
   .reduce(reduceOrder, { products: [], total: 0 });
 
 const groupByID = (order) => {
-  let orderDetailed = order
+  const orderDetailed = order
     .map(([orderId, deliver, street, streetNumber, date, , , , qty, , , name, price]) => ({
       orderId, date, adress: `${street}, ${streetNumber}`, qty, name, price, deliver,
     }));
   const ordersID = Object.keys(_.groupBy(orderDetailed, 'orderId'));
-  orderDetailed = ordersID.map((id) => _.groupBy(orderDetailed, 'orderId')[id]
+  return ordersID.map((id) => _.groupBy(orderDetailed, 'orderId')[id]
     .reduce(reduceOrder, { products: [], total: 0 }));
-  return orderDetailed;
 };
 
 module.exports = {

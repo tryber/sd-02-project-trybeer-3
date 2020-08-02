@@ -1,4 +1,4 @@
-const { getProducts, newOrder, addProducts } = require('../services/productsService');
+const { getProducts, newOrder, addProducts, delivered } = require('../services/productsService');
 
 const getAllProducts = async (_req, res) => {
   const products = await getProducts();
@@ -22,7 +22,18 @@ const createOrder = async (req, res, next) => {
   }
 };
 
+const markAsDelivered = async (req, res, next) => {
+  const { role } = req.user;
+  const { id } = req.params;
+  if (role !== 'admin') return next({ code: 'unauthorized', message: 'User not alowed' });
+  await delivered(id);
+  res.status(200).json({
+    status: 'success',
+  });
+};
+
 module.exports = {
   getAllProducts,
   createOrder,
+  markAsDelivered,
 };

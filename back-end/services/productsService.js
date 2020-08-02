@@ -1,4 +1,5 @@
-const { getAllProducts, createNewOrder, addToOrder } = require('../models/productsModel');
+const { getAllProducts, createNewOrder, addToOrder,
+  markDelivered } = require('../models/productsModel');
 
 const allFields = ['product_id', 'product_name', 'product_price', 'picture'];
 const newOrderFields = ['delivered', 'street', 'street_number', 'order_date', 'client_id'];
@@ -20,9 +21,12 @@ const addProducts = async (products, orderID) => {
   }));
 };
 
+const delivered = async (id) => markDelivered(id);
+
 module.exports = {
   getProducts,
   newOrder,
   addProducts,
   addToOrder,
+  delivered,
 };

@@ -1,6 +1,6 @@
 const express = require('express');
-const { getAllUsers, register, changeName, myOrders, adminOrderDetail,
-  getUser, orderDetails, allOrders } = require('../controllers/usersController');
+const { getAllUsers, register, changeName, myOrders,
+  getUser } = require('../controllers/usersController');
 const { login, authUser } = require('../controllers/authenticatorController');
 
 const router = express.Router();
@@ -28,17 +28,5 @@ router
 router
   .route('/orders')
   .get(authUser, myOrders);
-
-router
-  .route('/admin/orders')
-  .get(authUser, allOrders);
-
-router
-  .route('/admin/order/:id')
-  .get(authUser, adminOrderDetail);
-
-router
-  .route('/orders/:id')
-  .get(authUser, orderDetails);
 
 module.exports = router;
