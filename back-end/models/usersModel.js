@@ -34,6 +34,21 @@ const orderDetail = async (id, clientID) => {
   return queryDb(query, [id, clientID]);
 };
 
+const allOrders = async () => {
+  const query = `SELECT * FROM Orders O
+  INNER JOIN Order_Products OP ON OP.order_id = O.order_id
+  INNER JOIN Products P ON P.product_id = OP.product_id;`;
+  return queryDb(query, []);
+};
+
+const getOrder = async (id) => {
+  const query = `SELECT * FROM Orders O
+  INNER JOIN Order_Products OP ON OP.order_id = O.order_id
+  INNER JOIN Products P ON P.product_id = OP.product_id
+  HAVING OP.order_id=?;`;
+  return queryDb(query, [id]);
+};
+
 module.exports = {
   getAllUsers,
   getByEmail,
@@ -41,4 +56,6 @@ module.exports = {
   changeName,
   myOrders,
   orderDetail,
+  allOrders,
+  getOrder,
 };

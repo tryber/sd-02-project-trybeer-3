@@ -1,7 +1,7 @@
-const { getAllUsers, getByEmail, createUserModel, changeName,
-  myOrders, orderDetail } = require('../models/usersModel');
+const { getAllUsers, getByEmail, createUserModel, changeName, getOrder,
+  myOrders, orderDetail, allOrders } = require('../models/usersModel');
 
-const months = require('./utils/months');
+const { adjustOrders, adjustOrder, groupByID } = require('./utils/adjustOrders');
 
 const allFields = ['name', 'password', 'id', 'email', 'role'];
 const normalFields = ['name', 'email', 'password', 'role'];
@@ -27,33 +27,27 @@ const changeUserName = async (name, email) => {
 };
 
 const getOrders = async (id) => {
-  const orders = await myOrders(id);
-  return orders
-    .map(([orderId, date, total]) => ({ orderId, date, total }))
-    .map(({ orderId, date, total }) => (
-      {
-        orderId,
-        total,
-        day: date.toUTCString().split(' ')[1],
-        month: months[date.toUTCString().split(' ')[2]],
-      }
-    ));
+  const completeOrders = await myOrders(id);
+  return adjustOrders(completeOrders)
+    .map(({ orderId, day, month, total }) => ({ orderId, day, month, total }));
 };
 
 const getOrderDetail = async (id, clientID) => {
   const order = await orderDetail(id, clientID);
   if (!order.length) return { error: true };
-  return order
-    .map(([orderId, , , , date, , , , qty, , , name, price]) => ({
-      orderId, date, qty, name, price,
-    }))
-    .reduce((prev, { orderId, date, name, price, qty }) => ({
-      orderId,
-      day: new Date(date).getUTCDate(),
-      month: new Date(date).getUTCMonth() + 1,
-      products: [...prev.products, { name, qty, price, total: qty * price }],
-      total: prev.total + (qty * price),
-    }), { products: [], total: 0 });
+  const { deliver, ...orderDetailed } = adjustOrder(order);
+  return orderDetailed;
+};
+
+const getAllOrders = async () => {
+  const ordersAdmin = await allOrders();
+  return groupByID(ordersAdmin);
+};
+
+const getOrderComplete = async (id) => {
+  const order = await getOrder(id);
+  if (!order.length) return { error: true };
+  return groupByID(order);
 };
 
 module.exports = {
@@ -63,4 +57,6 @@ module.exports = {
   changeUserName,
   getOrders,
   getOrderDetail,
+  getAllOrders,
+  getOrderComplete,
 };

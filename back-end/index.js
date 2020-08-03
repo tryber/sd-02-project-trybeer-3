@@ -9,6 +9,7 @@ dotenv.config();
 const { errorController } = require('./controllers/errorController');
 const usersRoute = require('./routes/usersRoute');
 const productsRoute = require('./routes/productsRoute');
+const ordersRoute = require('./routes/ordersRoute');
 
 const app = express();
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/user', usersRoute);
 app.use('/products', productsRoute);
+app.use('/orders', ordersRoute);
 
 app.use(errorController);
 
