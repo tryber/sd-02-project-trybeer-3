@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Trybeer from '../context';
+import { getClientProfile } from '../services';
 import '../styles/PerfilCliente.css';
+
+const getClientData = async () => {
+  const response = await getClientProfile();
+  console.log(response.data);
+};
 
 const renderPerfilSection = (emailCliente, clientName) => (
   <div className="profile-campo">
@@ -27,8 +33,6 @@ const renderPerfilSection = (emailCliente, clientName) => (
   </div>
 );
 
-const getDados = () => localStorage.getItem('Token do usuário logado');
-
 const renderSalvarButton = (email, senha, disabled) => (
   <div className="btn-save-profile-div">
     <Link to="/products">
@@ -51,7 +55,7 @@ const PerfilCliente = () => {
     setPage('Meu perfil');
   }, [setPage]);
 
-  getDados();
+  getClientData();
 
   return (
     <div>
