@@ -41,8 +41,6 @@ export const patchProfile = async (obj, token) => (
 export const getOrders = async (token) => (
   axios
     .get(APIGetOrders, undefined, { headers: patchHeaders(token) })
-    .then((data) => data)
-    .catch((err) => err)
 );
 
 export const getClientProfile = async () => (
