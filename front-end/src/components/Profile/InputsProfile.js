@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import * as ls from '../Utils/localStorage';
 import Trybeer from '../../context';
 
 const OnlyShows = (profileUser) => (
@@ -20,9 +21,8 @@ const InputsProfile = () => {
     setProfileEmail,
   } = useContext(Trybeer);
 
-
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('user'));
+    const userData = ls.getItem('user');
     setProfileUser(userData.name);
     setProfileEmail(userData.email);
   }, [setProfileEmail, setProfileUser]);
@@ -31,7 +31,7 @@ const InputsProfile = () => {
     <div className="profile-campo">
       <label htmlFor="email">Nome</label>
       {
-        JSON.parse(localStorage.getItem('user')).role === 'admin'
+        ls.getItem('user', {}).role === 'admin'
           ? OnlyShows(profileUser)
           : (
             <input

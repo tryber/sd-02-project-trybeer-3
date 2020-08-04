@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import * as ls from '../components/Utils/localStorage';
 import { postLogin } from '../services';
 import '../styles/Login.css';
 
@@ -83,7 +84,7 @@ export default function Login() {
   const [serverError, setServerError] = useState('');
   const history = useHistory();
 
-  if (localStorage.getItem('user')) history.push('/products');
+  if (ls.getItem('user')) history.push('/products');
 
   useEffect(() => {
     if (senha.length >= 6 && regexEmail.test(email)) {

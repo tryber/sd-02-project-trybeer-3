@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { patchProfile } from '../../services';
+import * as ls from '../Utils/localStorage';
 import Trybeer from '../../context';
 
 const sizeName = 'Nome deve ser diferente do anterior e ter no mínimo 12 caracteres.';
@@ -21,7 +22,7 @@ const updateName = async (name, user, setAnswer) => {
   };
 
   await patchProfile(update);
-  localStorage.setItem('user', JSON.stringify(update));
+  ls.setItem('user', update);
 
   setAnswer(true);
   setTimeout(() => {
@@ -31,12 +32,14 @@ const updateName = async (name, user, setAnswer) => {
 
 const SaveButton = () => {
   const { profileUser } = useContext(Trybeer);
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = ls.getItem('user', {});
   const [size, setSize] = useState(false);
   const [answer, setAnswer] = useState(false);
 
   useEffect(() => {
     if (profileUser === user.name || profileUser.split('').length < 12) {
+      console.log('false');
+      console.log(profileUser, user.name);
       return setSize(false);
     }
     return setSize(true);
