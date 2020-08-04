@@ -1,6 +1,17 @@
 import React, { useContext, useEffect } from 'react';
 import Trybeer from '../../context';
 
+const OnlyShows = (profileUser) => (
+  <input
+    id="name"
+    name="name"
+    type="text"
+    readOnly
+    data-testid="email-input"
+    defaultValue={profileUser}
+  />
+);
+
 const InputsProfile = () => {
   const {
     profileUser,
@@ -8,6 +19,7 @@ const InputsProfile = () => {
     profileEmail,
     setProfileEmail,
   } = useContext(Trybeer);
+
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
@@ -18,14 +30,20 @@ const InputsProfile = () => {
   return (
     <div className="profile-campo">
       <label htmlFor="email">Nome</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        data-testid="email-input"
-        defaultValue={profileUser}
-        onChange={({ target }) => setProfileUser(target.value)}
-      />
+      {
+        JSON.parse(localStorage.getItem('user')).role === 'admin'
+          ? OnlyShows(profileUser)
+          : (
+            <input
+              id="name"
+              name="name"
+              type="text"
+              data-testid="email-input"
+              defaultValue={profileUser}
+              onChange={({ target }) => setProfileUser(target.value)}
+            />
+          )
+      }
       <label htmlFor="email">E-mail</label>
       <input
         id="email"

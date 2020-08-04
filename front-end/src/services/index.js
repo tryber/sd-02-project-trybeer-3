@@ -5,7 +5,6 @@ const APIPostLogin = 'http://localhost:3001/user/login';
 const APIGetProducts = 'http://localhost:3001/products';
 const APIPatchProfile = 'http://localhost:3001/user/profile';
 const APIGetOrders = 'http://localhost:3001/orders';
-const APIGetUserProfile = 'http://localhost:3001/user';
 
 const headers = {
   Accept: '*/*',
@@ -14,6 +13,7 @@ const headers = {
 
 const patchHeaders = (token) => ({
   Accept: '*/*',
+  'Access-Control-Allow-Headers': '*',
   Authorization: token,
   'Content-Type': 'application/json',
 });
@@ -33,17 +33,15 @@ export const postLogin = async (obj) => (
     .post(APIPostLogin, obj, { headers })
 );
 
-export const patchProfile = async (obj, token) => (
-  axios
-    .patch(APIPatchProfile, obj, { headers: patchHeaders(token) })
-);
+export const patchProfile = async (obj) => {
+  const { token } = obj;
+  return (
+    axios
+      .patch(APIPatchProfile, obj, { headers: patchHeaders(token) })
+  );
+};
 
 export const getOrders = async (token) => (
   axios
     .get(APIGetOrders, undefined, { headers: patchHeaders(token) })
-);
-
-export const getClientProfile = async () => (
-  axios
-    .get(APIGetUserProfile, { headers: { Authorization: localStorage.getItem('Token do usuário logado') } })
 );
