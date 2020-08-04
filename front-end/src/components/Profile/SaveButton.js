@@ -4,7 +4,7 @@ import Trybeer from '../../context';
 
 const sizeName = 'Nome deve ser diferente do anterior e ter no mínimo 12 caracteres.';
 
-const updateName = async (name, user, setAnswer, setSize) => {
+const updateName = async (name, user, setAnswer) => {
   const {
     email,
     role,
