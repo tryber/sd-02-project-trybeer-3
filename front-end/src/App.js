@@ -6,6 +6,7 @@ import PerfilCliente from './pages/PerfilCliente';
 import Products from './pages/Products';
 import MeusPedidosCliente from './pages/MeusPedidosCliente';
 import adminOrders from './pages/adminOrders';
+import adminOrderDetail from './pages/adminOrderDetail';
 import './App.css';
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
       <Route exact path="/products" component={Products} />
       <Route exact path="/orders" component={MeusPedidosCliente} />
       <Route exact path="/admin/orders" component={adminOrders} />
+      <Route exact path="/admin/orders/:id" component={adminOrderDetail} />
     </Switch>
   </Router>
 );
