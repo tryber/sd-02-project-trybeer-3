@@ -1,9 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import PerfilCliente from './pages/PerfilCliente';
-import PerfilAdmin from './pages/PerfilAdmin';
+import Profile from './pages/Profile';
 import Products from './pages/Products';
 import MeusPedidosCliente from './pages/MeusPedidosCliente';
 import './App.css';
@@ -16,9 +20,9 @@ const App = () => (
       </Route>
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
-      <Route exact path="/profile" component={PerfilCliente} />
+      <Route exact path="/profile" component={Profile} />
       <Route exact path="/products" component={Products} />
-      <Route exact path="/admin/profile" component={PerfilAdmin} />
+      <Route exact path="/admin/profile" component={Profile} />
       <Route exact path="/orders" component={MeusPedidosCliente} />
     </Switch>
   </Router>

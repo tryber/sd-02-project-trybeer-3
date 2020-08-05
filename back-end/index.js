@@ -13,7 +13,7 @@ const ordersRoute = require('./routes/ordersRoute');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({ allowedHeaders: '*' }));
 app.use('/', express.static(`${__dirname}/public`));
 
 app.use(bodyParser.urlencoded({ extended: false }));
