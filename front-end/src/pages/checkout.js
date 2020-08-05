@@ -46,10 +46,10 @@ const adress = (setStreet, setNumber) => (
 
 const errorDetailed = () => (
   <div>Erro nos dados</div>
-)
+);
 
 export default function Checkout() {
-  const { cartProducts, setCartProducts } = useContext(Trybeer);
+  const { setCartProducts } = useContext(Trybeer);
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [error, setError] = useState(false);
@@ -61,8 +61,8 @@ export default function Checkout() {
   const cart = Object.values(JSON.parse(localStorage.getItem('cart')));
   if (redirect) {
     localStorage.removeItem('cart');
-    history.push('/products')
-  };
+    history.push('/products');
+  }
   return (
     <div>
       <div>
@@ -78,7 +78,8 @@ export default function Checkout() {
       {adress(setStreet, setNumber)}
       <button
         type="button"
-        onClick={() => sendToOrder(street, number, setError, setRedirect, setCartProducts)}>
+        onClick={() => sendToOrder(street, number, setError, setRedirect, setCartProducts)}
+      >
         Finalizar pedido
         </button>
       {error ? errorDetailed() : ''}
