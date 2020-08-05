@@ -16,7 +16,7 @@ const ShowOrders = () => {
       setPastOrders(orders);
     };
     fetchOrders();
-  }, []);
+  }, [setPastOrders]);
 
   return pastOrders && (
     <div className="PastOrders_all">
