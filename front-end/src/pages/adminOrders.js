@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import OrderCard from '../components/ListOrder/OrderCard';
 import { getAdminOrders } from '../services/index';
 import '../styles/adminOrders.css';
@@ -15,14 +16,23 @@ const sortingFunc = (a, b) => {
 
 export default function Login() {
   const [orders, setOrders] = useState([]);
+  const [redirect, setRedirect] = useState(false);
+
   useEffect(() => {
     const fetchOrders = async () => {
-      const { token } = JSON.parse(localStorage.getItem('user'));
-      const ordersAdmin = await getAdminOrders(token);
-      setOrders(ordersAdmin.data.orders.sort(sortingFunc));
+      try {
+        const { token } = JSON.parse(localStorage.getItem('user'));
+        const ordersAdmin = await getAdminOrders(token);
+        console.log(ordersAdmin);
+        return setOrders(ordersAdmin.data.orders.sort(sortingFunc));
+      } catch (error) {
+        return setRedirect(true);
+      }
     };
     fetchOrders();
   }, []);
+
+  if (redirect) return <Redirect to="/login" />;
 
   return (
     <div>

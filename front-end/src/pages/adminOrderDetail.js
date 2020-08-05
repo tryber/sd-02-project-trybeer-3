@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { getOrderAdminDetail, changeToDelivered } from '../services';
 import ListOrderDetailed from '../components/adminOrder/listOrderDetail';
 import '../styles/adminOrders.css';
@@ -19,17 +19,24 @@ const renderButton = (setloading, id) => {
 export default function OrderDetail() {
   const [order, setOrder] = useState({ status: 'loading' });
   const [loading, setloading] = useState(true);
+  const [redirect, setRedirect] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     const fetchOrderDetail = async () => {
-      const { token } = JSON.parse(localStorage.getItem('user'));
-      const orderAdmin = await getOrderAdminDetail(token, id);
-      setOrder(orderAdmin.data);
-      setloading(false);
+      try {
+        const { token } = JSON.parse(localStorage.getItem('user'));
+        const orderAdmin = await getOrderAdminDetail(token, id);
+        setOrder(orderAdmin.data);
+        setloading(false);
+      } catch (error) {
+        return setRedirect(true);
+      }
     };
     fetchOrderDetail();
   }, [id, loading]);
+
+  if (redirect) return <Redirect to="/login" />;
 
   return (
     <div>
