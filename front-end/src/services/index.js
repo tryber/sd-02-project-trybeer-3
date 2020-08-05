@@ -7,6 +7,7 @@ const APIPatchProfile = 'http://localhost:3001/user/profile';
 const APIGetOrders = 'http://localhost:3001/orders';
 const APIGetAdminOrders = 'http://localhost:3001/orders/admin';
 const APIOrderAdminDetail = 'http://localhost:3001/orders/admin/';
+const APICheckout = 'http://localhost:3001/products/checkout';
 
 const headers = {
   Accept: '*/*',
@@ -55,4 +56,8 @@ export const getOrderAdminDetail = async (token, id) => axios
   .get(`${APIOrderAdminDetail}${id}`, { headers: patchHeaders(token) });
 
 export const changeToDelivered = async (token, id) => axios
-  .patch(`http://localhost:3001/orders/admin/${id}/delivered`, undefined, { headers: patchHeaders(token) });
+  .patch(`http://localhost:3001/orders/admin/${id}/delivered`,
+    undefined, { headers: patchHeaders(token) });
+
+export const sendToOrderAPI = async (token, obj) => axios
+  .post(APICheckout, obj, { headers: patchHeaders(token) });
