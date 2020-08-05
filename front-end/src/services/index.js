@@ -4,7 +4,7 @@ const APIPostRegister = 'http://localhost:3001/user/register';
 const APIPostLogin = 'http://localhost:3001/user/login';
 const APIGetProducts = 'http://localhost:3001/products';
 const APIPatchProfile = 'http://localhost:3001/user/profile';
-const APIGetOrders = 'http://localhost:3001/orders';
+const APIGetOrders = 'http://localhost:3001/user/orders';
 
 const headers = {
   Accept: '*/*',
@@ -41,7 +41,5 @@ export const patchProfile = async (obj) => {
   );
 };
 
-export const getOrders = async (token) => (
-  axios
-    .get(APIGetOrders, undefined, { headers: patchHeaders(token) })
-);
+export const getOrders = async (token) => axios
+  .get(APIGetOrders, { headers: patchHeaders(token) });
