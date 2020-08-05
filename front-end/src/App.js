@@ -12,6 +12,7 @@ import Products from './pages/Products';
 import MyOrders from './pages/MyOrders';
 import adminOrders from './pages/adminOrders';
 import adminOrderDetail from './pages/adminOrderDetail';
+import checkout from './pages/checkout';
 import './App.css';
 
 const App = () => (
@@ -28,6 +29,7 @@ const App = () => (
       <Route exact path="/orders" component={MyOrders} />
       <Route exact path="/admin/orders" component={adminOrders} />
       <Route exact path="/admin/orders/:id" component={adminOrderDetail} />
+      <Route exact path="/checkout" component={checkout} />
     </Switch>
   </Router>
 );
