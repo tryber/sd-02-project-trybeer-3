@@ -3,27 +3,34 @@ import { useHistory } from 'react-router-dom';
 import * as ls from '../components/Utils/localStorage';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
-import AllProducts from '../components/Products/AllProducts';
-import ShowCart from '../components/Products/ShowCart';
 import Trybeer from '../context';
+import InputsProfile from '../components/Profile/InputsProfile';
+import SaveButton from '../components/Profile/SaveButton';
+import '../styles/Profile.css';
 
-const Products = () => {
+const Profile = () => {
   const { setPage } = useContext(Trybeer);
   const history = useHistory();
+  const user = ls.getItem('user');
 
   useEffect(() => {
-    if (!ls.getItem('user')) return history.push('/login');
-    return setPage('Produtos');
-  }, [setPage, history]);
+    setPage('Meu perfil');
+  }, [setPage]);
 
+  if (!user) {
+    history.push('/login');
+    return null;
+  }
   return (
     <div>
       <Header />
       <Sidebar />
-      <AllProducts />
-      <ShowCart />
+      <div className="div-page-body-perfil">
+        <InputsProfile />
+        <SaveButton />
+      </div>
     </div>
   );
 };
 
-export default Products;
+export default Profile;

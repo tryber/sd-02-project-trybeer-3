@@ -11,6 +11,8 @@ const ProviderTrybeer = ({ children }) => {
   const [password, setPassword] = useState('');
   const [isSalesman, setIsSalesman] = useState(false);
   const [cartProducts, setCartProducts] = useState(getCart);
+  const [profileUser, setProfileUser] = useState('');
+  const [profileEmail, setProfileEmail] = useState('');
 
   const toProvider = {
     open,
@@ -27,6 +29,10 @@ const ProviderTrybeer = ({ children }) => {
     setIsSalesman,
     cartProducts,
     setCartProducts,
+    profileUser,
+    setProfileUser,
+    profileEmail,
+    setProfileEmail,
   };
 
   return (

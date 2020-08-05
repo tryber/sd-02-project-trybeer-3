@@ -15,6 +15,7 @@ const headers = {
 
 const patchHeaders = (token) => ({
   Accept: '*/*',
+  'Access-Control-Allow-Headers': '*',
   Authorization: token,
   'Content-Type': 'application/json',
 });
@@ -34,10 +35,13 @@ export const postLogin = async (obj) => (
     .post(APIPostLogin, obj, { headers })
 );
 
-export const patchProfile = async (obj, token) => (
-  axios
-    .patch(APIPatchProfile, obj, { headers: patchHeaders(token) })
-);
+export const patchProfile = async (obj) => {
+  const { token } = obj;
+  return (
+    axios
+      .patch(APIPatchProfile, obj, { headers: patchHeaders(token) })
+  );
+};
 
 export const getOrders = async (token) => (
   axios
