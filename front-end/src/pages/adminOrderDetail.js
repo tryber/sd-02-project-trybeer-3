@@ -28,7 +28,7 @@ export default function OrderDetail() {
         const { token } = JSON.parse(localStorage.getItem('user'));
         const orderAdmin = await getOrderAdminDetail(token, id);
         setOrder(orderAdmin.data);
-        setloading(false);
+        return setloading(false);
       } catch (error) {
         return setRedirect(true);
       }
