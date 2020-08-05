@@ -4,13 +4,9 @@ const APIPostRegister = 'http://localhost:3001/user/register';
 const APIPostLogin = 'http://localhost:3001/user/login';
 const APIGetProducts = 'http://localhost:3001/products';
 const APIPatchProfile = 'http://localhost:3001/user/profile';
-<<<<<<< HEAD
 const APIGetOrders = 'http://localhost:3001/user/orders';
-=======
-const APIGetOrders = 'http://localhost:3001/orders';
 const APIGetAdminOrders = 'http://localhost:3001/orders/admin';
 const APIOrderAdminDetail = 'http://localhost:3001/orders/admin/';
->>>>>>> 218bd872e3dab5931b4f8b380913f807b0b4caed
 
 const headers = {
   Accept: '*/*',
