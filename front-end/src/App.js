@@ -10,6 +10,8 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Products from './pages/Products';
 import MyOrders from './pages/MyOrders';
+import adminOrders from './pages/adminOrders';
+import adminOrderDetail from './pages/adminOrderDetail';
 import './App.css';
 
 const App = () => (
@@ -24,6 +26,8 @@ const App = () => (
       <Route exact path="/products" component={Products} />
       <Route exact path="/admin/profile" component={Profile} />
       <Route exact path="/orders" component={MyOrders} />
+      <Route exact path="/admin/orders" component={adminOrders} />
+      <Route exact path="/admin/orders/:id" component={adminOrderDetail} />
     </Switch>
   </Router>
 );

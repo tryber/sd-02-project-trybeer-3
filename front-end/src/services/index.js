@@ -4,7 +4,13 @@ const APIPostRegister = 'http://localhost:3001/user/register';
 const APIPostLogin = 'http://localhost:3001/user/login';
 const APIGetProducts = 'http://localhost:3001/products';
 const APIPatchProfile = 'http://localhost:3001/user/profile';
+<<<<<<< HEAD
 const APIGetOrders = 'http://localhost:3001/user/orders';
+=======
+const APIGetOrders = 'http://localhost:3001/orders';
+const APIGetAdminOrders = 'http://localhost:3001/orders/admin';
+const APIOrderAdminDetail = 'http://localhost:3001/orders/admin/';
+>>>>>>> 218bd872e3dab5931b4f8b380913f807b0b4caed
 
 const headers = {
   Accept: '*/*',
@@ -43,3 +49,12 @@ export const patchProfile = async (obj) => {
 
 export const getOrders = async (token) => axios
   .get(APIGetOrders, { headers: patchHeaders(token) });
+
+export const getAdminOrders = async (token) => axios
+  .get(APIGetAdminOrders, { headers: patchHeaders(token) });
+
+export const getOrderAdminDetail = async (token, id) => axios
+  .get(`${APIOrderAdminDetail}${id}`, { headers: patchHeaders(token) });
+
+export const changeToDelivered = async (token, id) => axios
+  .patch(`http://localhost:3001/orders/admin/${id}/delivered`, undefined, { headers: patchHeaders(token) });
