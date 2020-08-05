@@ -38,8 +38,6 @@ const SaveButton = () => {
 
   useEffect(() => {
     if (profileUser === user.name || profileUser.split('').length < 12) {
-      console.log('false');
-      console.log(profileUser, user.name);
       return setSize(false);
     }
     return setSize(true);
