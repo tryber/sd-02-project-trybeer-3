@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { postRegister, postLogin } from '../../services';
+import * as ls from '../Utils/localStorage';
 import Trybeer from '../../context';
-import { postRegister } from '../../services';
 
 const validEmail = /[A-Z0-9]{1,}@[A-Z0-9]{2,}\.[A-Z0-9]{2,}/i;
 const validName = /[A-Z ]{12,}/i;
@@ -9,7 +10,10 @@ const validPassword = /[0-9]{6,}/;
 
 const doRequest = async (obj, history) => {
   await postRegister(obj);
-  localStorage.setItem('user', JSON.stringify(obj));
+  const user = await postLogin({ email: obj.email, password: obj.password });
+  const { status, ...values } = user.data;
+  ls.setItem('user', values);
+  if (values.role === 'admin') return history.push('/admin/orders');
   return history.push('/products');
 };
 
