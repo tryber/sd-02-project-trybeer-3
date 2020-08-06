@@ -3,6 +3,8 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { sendToOrderAPI } from '../services';
 import { getCart } from '../components/Utils/cart';
 import Trybeer from '../context';
+import '../styles/checkout.css';
+import '../styles/adminOrders.css';
 
 const sendToOrder = async (street, streetNumber, setError, setRedirect, setCartProducts) => {
   try {
@@ -65,12 +67,12 @@ export default function Checkout() {
   }
   return (
     <div>
-      <div>
+      <div className="title-orders">Produtos</div>
+      <div className="container-checkout">
         {cart.map(({ name, quantity, price }) => (
-          <div key={name}>
-            <div>{quantity}</div>
-            <div>{name}</div>
-            <div>{(quantity * price).toFixed(2)}</div>
+          <div className="container-detailed-checkout" key={name}>
+            <div>{`${quantity} - ${name}`}</div>
+            <div>{`R$ ${(quantity * price).toFixed(2)}`}</div>
           </div>
         ))}
         <div>Total: </div>
