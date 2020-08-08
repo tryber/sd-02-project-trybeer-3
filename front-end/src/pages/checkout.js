@@ -3,6 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { sendToOrderAPI } from '../services';
 import { getCart } from '../components/Utils/cart';
 import Trybeer from '../context';
+import CartList from './cartList';
 import '../styles/checkout.css';
 import '../styles/adminOrders.css';
 
@@ -26,7 +27,7 @@ const sendToOrder = async (street, streetNumber, setError, setRedirect, setCartP
 };
 
 const adress = (setStreet, setNumber) => (
-  <div>
+  <div className="inputs-checkout-container">
     <label htmlFor="street">Rua:</label>
     <input
       id="street"
@@ -60,7 +61,6 @@ export default function Checkout() {
   if (!localStorage.getItem('user') || !localStorage.getItem('cart')) {
     return <Redirect to="/login" />;
   }
-  const cart = Object.values(JSON.parse(localStorage.getItem('cart')));
   if (redirect) {
     localStorage.removeItem('cart');
     history.push('/products');
@@ -68,15 +68,7 @@ export default function Checkout() {
   return (
     <div>
       <div className="title-orders">Produtos</div>
-      <div className="container-checkout">
-        {cart.map(({ name, quantity, price }) => (
-          <div className="container-detailed-checkout" key={name}>
-            <div>{`${quantity} - ${name}`}</div>
-            <div>{`R$ ${(quantity * price).toFixed(2)}`}</div>
-          </div>
-        ))}
-        <div>Total: </div>
-      </div>
+      <CartList />
       {adress(setStreet, setNumber)}
       <button
         type="button"

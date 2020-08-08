@@ -46,3 +46,13 @@ a {
   padding: 1vh;
   width: 30%;
 }
+
+.inputs-checkout-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1vh;
+}
+
+.inputs-checkout-container input {
+  width: 60%;
+}
