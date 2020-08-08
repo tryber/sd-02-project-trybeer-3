@@ -52,6 +52,7 @@ const loginClick = async (email, senha, history, setServerError) => {
         token: data.token,
         role: data.role,
       }));
+      if (data.role === 'admin') return history.push('/admin/orders');
       history.push('/products');
     })
     .catch(({ response: { data } }) => {
