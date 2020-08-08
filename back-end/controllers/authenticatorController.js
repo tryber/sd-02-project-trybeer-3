@@ -4,7 +4,7 @@ const { getUser } = require('../services/usersService');
 const { JWT_SECRET } = process.env;
 
 const jwtConfig = {
-  expiresIn: '30m',
+  expiresIn: '300m',
   algorithm: 'HS256',
 };
 
