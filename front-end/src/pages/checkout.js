@@ -71,6 +71,7 @@ export default function Checkout() {
             <div>{quantity}</div>
             <div>{name}</div>
             <div>{(quantity * price).toFixed(2)}</div>
+            <button type="button">Remove</button>
           </div>
         ))}
         <div>Total: </div>
