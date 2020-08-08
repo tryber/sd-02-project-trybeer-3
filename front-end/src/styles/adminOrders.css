@@ -20,6 +20,7 @@
 }
 
 .title-orders {
+  margin-top: 14vh;
   font-size: 2.5em;
 }
 
@@ -73,12 +74,26 @@ a {
   width: 160px;
 }
 
-.List_Order_Detail_all {
+.Admin_Profile {
+  margin: 20vh 0 10vh 30vw;
+}
+
+.Admin_detail_div_all {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-left: 35vw;
 }
 
-.Admin_Profile {
-  margin: 20vh 0 10vh 30vw;
+.Admin_detail_div_all button {
+  margin: 1em;
+  width: 15vw;
+}
+
+.List_Order_Detail_all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

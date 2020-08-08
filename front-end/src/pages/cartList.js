@@ -29,10 +29,12 @@ export default function CartList() {
           <button
             type="button"
             onClick={() => deleteItem(ids[index], setItens, setIds, setTotal)}
-          > X </button>
+          >
+            X
+          </button>
         </div>
       ))}
-      <div>Total: R$ {`${total.toFixed(2)}`}</div>
+      <div>{`Total: R$ ${total.toFixed(2)}`}</div>
     </div>
   );
 }
