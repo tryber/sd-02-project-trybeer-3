@@ -3,6 +3,9 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { sendToOrderAPI } from '../services';
 import { getCart } from '../components/Utils/cart';
 import Trybeer from '../context';
+import CartList from './cartList';
+import '../styles/checkout.css';
+import '../styles/adminOrders.css';
 
 const sendToOrder = async (street, streetNumber, setError, setRedirect, setCartProducts) => {
   try {
@@ -24,7 +27,7 @@ const sendToOrder = async (street, streetNumber, setError, setRedirect, setCartP
 };
 
 const adress = (setStreet, setNumber) => (
-  <div>
+  <div className="inputs-checkout-container">
     <label htmlFor="street">Rua:</label>
     <input
       id="street"
@@ -58,24 +61,14 @@ export default function Checkout() {
   if (!localStorage.getItem('user') || !localStorage.getItem('cart')) {
     return <Redirect to="/login" />;
   }
-  const cart = Object.values(JSON.parse(localStorage.getItem('cart')));
   if (redirect) {
     localStorage.removeItem('cart');
     history.push('/products');
   }
   return (
     <div>
-      <div>
-        {cart.map(({ name, quantity, price }) => (
-          <div key={name}>
-            <div>{quantity}</div>
-            <div>{name}</div>
-            <div>{(quantity * price).toFixed(2)}</div>
-            <button type="button">Remove</button>
-          </div>
-        ))}
-        <div>Total: </div>
-      </div>
+      <div className="title-orders">Produtos</div>
+      <CartList />
       {adress(setStreet, setNumber)}
       <button
         type="button"

@@ -36,7 +36,7 @@ export default function Login() {
 
   return (
     <div>
-      <div>Pedidos</div>
+      <div className="title-orders">Pedidos</div>
       <div className="container-orders">
         {orders.map((order) => (
           <OrderCard key={order.orderId} order={order} />

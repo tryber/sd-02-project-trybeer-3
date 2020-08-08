@@ -5,17 +5,18 @@ export default function ListOrderDetailed(order) {
   console.log(products);
   return (
     <div>
-      <div>{`Pedido ${orderId} - ${deliver ? 'Entregue' : 'Pendente'}`}</div>
-      <div>
+      <div className="title-orders">
+        {`Pedido ${orderId} - ${deliver ? 'Entregue' : 'Pendente'}`}
+      </div>
+      <div className="container-big-border">
         {products.map((product) => (
-          <div key={product.name}>
-            <div>{product.qty}</div>
-            <div>{product.name}</div>
-            <div>{product.total}</div>
+          <div className="container-detail-admin" key={product.name}>
+            <div>{`${product.qty} - ${product.name}`}</div>
+            <div>{(product.total).toFixed(2)}</div>
           </div>
         ))}
+        <div>{`Total: ${total.toFixed(2)}`}</div>
       </div>
-      <div>{`Total: ${total.toFixed(2)}`}</div>
     </div>
   );
 }
