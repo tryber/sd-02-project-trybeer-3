@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import OrderCard from '../components/ListOrder/OrderCard';
 import { getAdminOrders } from '../services/index';
+import AdminSidebar from '../components/Sidebar/AdminSidebar';
 import '../styles/adminOrders.css';
 
 const sortingFunc = (a, b) => {
@@ -23,7 +24,6 @@ export default function Login() {
       try {
         const { token } = JSON.parse(localStorage.getItem('user'));
         const ordersAdmin = await getAdminOrders(token);
-        console.log(ordersAdmin);
         return setOrders(ordersAdmin.data.orders.sort(sortingFunc));
       } catch (error) {
         return setRedirect(true);
@@ -35,12 +35,15 @@ export default function Login() {
   if (redirect) return <Redirect to="/login" />;
 
   return (
-    <div>
-      <div className="title-orders">Pedidos</div>
+    <div className="Admin_orders">
+      <AdminSidebar />
       <div className="container-orders">
-        {orders.map((order) => (
-          <OrderCard key={order.orderId} order={order} />
-        ))}
+        <h3 className="title-orders">Pedidos</h3>
+        <div className="Order_Card_All">
+          {orders.map((order) => (
+            <OrderCard key={order.orderId} order={order} />
+          ))}
+        </div>
       </div>
     </div>
   );

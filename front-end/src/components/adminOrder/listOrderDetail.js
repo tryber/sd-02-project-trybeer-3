@@ -1,21 +1,25 @@
 import React from 'react';
 
 export default function ListOrderDetailed(order) {
-  const { orderId, deliver, total, products } = order.order;
-  console.log(products);
+  const {
+    orderId,
+    deliver,
+    total,
+    products,
+  } = order.order;
   return (
-    <div>
+    <div className="List_Order_Detail_all">
       <div className="title-orders">
-        {`Pedido ${orderId} - ${deliver ? 'Entregue' : 'Pendente'}`}
+        <h5>{`Pedido ${orderId} - ${deliver ? 'Entregue' : 'Pendente'}`}</h5>
       </div>
       <div className="container-big-border">
         {products.map((product) => (
           <div className="container-detail-admin" key={product.name}>
-            <div>{`${product.qty} - ${product.name}`}</div>
-            <div>{(product.total).toFixed(2)}</div>
+            <h5>{`${parseInt(product.qty, 10)} - ${product.name}`}</h5>
+            <p>{(product.total).toFixed(2)}</p>
           </div>
         ))}
-        <div>{`Total: ${total.toFixed(2)}`}</div>
+        <h4>{`Total: ${total.toFixed(2)}`}</h4>
       </div>
     </div>
   );

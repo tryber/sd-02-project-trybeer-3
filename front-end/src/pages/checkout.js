@@ -6,6 +6,8 @@ import Trybeer from '../context';
 import CartList from './cartList';
 import '../styles/checkout.css';
 import '../styles/adminOrders.css';
+import Header from '../components/Header/Header';
+import Sidebar from '../components/Sidebar/Sidebar';
 
 const sendToOrder = async (street, streetNumber, setError, setRedirect, setCartProducts) => {
   try {
@@ -62,11 +64,13 @@ export default function Checkout() {
     return <Redirect to="/login" />;
   }
   if (redirect) {
-    localStorage.removeItem('cart');
+    localStorage.setItem('cart', JSON.stringify({}));
     history.push('/products');
   }
   return (
     <div>
+      <Header />
+      <Sidebar />
       <div className="title-orders">Produtos</div>
       <CartList />
       {adress(setStreet, setNumber)}
@@ -75,7 +79,7 @@ export default function Checkout() {
         onClick={() => sendToOrder(street, number, setError, setRedirect, setCartProducts)}
       >
         Finalizar pedido
-        </button>
+      </button>
       {error ? errorDetailed() : ''}
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Redirect } from 'react-router-dom';
 import { getOrderAdminDetail, changeToDelivered } from '../services';
 import ListOrderDetailed from '../components/adminOrder/listOrderDetail';
+import AdminSidebar from '../components/Sidebar/AdminSidebar';
 import '../styles/adminOrders.css';
 
 const renderButton = (setloading, id) => {
@@ -40,10 +41,11 @@ export default function OrderDetail() {
 
   return (
     <div>
+      <AdminSidebar />
       <div>
         {loading ? 'Loading'
           : (
-            <div>
+            <div className="Admin_detail_div_all">
               <ListOrderDetailed order={order.order[0]} />
               {!order.order[0].deliver ? renderButton(setloading, id) : ''}
             </div>

@@ -52,7 +52,8 @@ const loginClick = async (email, senha, history, setServerError) => {
         token: data.token,
         role: data.role,
       }));
-      history.push('/products');
+      if (data.role === 'admin') return history.push('/admin/orders');
+      return history.push('/products');
     })
     .catch(({ response: { data } }) => {
       setServerError(data.message);
