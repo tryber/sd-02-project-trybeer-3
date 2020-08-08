@@ -12,6 +12,7 @@ import Products from './pages/Products';
 import MyOrders from './pages/MyOrders';
 import adminOrders from './pages/adminOrders';
 import adminOrderDetail from './pages/adminOrderDetail';
+import ClientOrderDetail from './pages/ClientOrderDetail';
 import checkout from './pages/checkout';
 import './App.css';
 
@@ -27,6 +28,7 @@ const App = () => (
       <Route exact path="/products" component={Products} />
       <Route exact path="/admin/profile" component={Profile} />
       <Route exact path="/orders" component={MyOrders} />
+      <Route exact path="/orders/:id" component={ClientOrderDetail} />
       <Route exact path="/admin/orders" component={adminOrders} />
       <Route exact path="/admin/orders/:id" component={adminOrderDetail} />
       <Route exact path="/checkout" component={checkout} />
