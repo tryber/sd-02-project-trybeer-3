@@ -78,3 +78,7 @@ a {
   flex-direction: column;
   margin-left: 35vw;
 }
+
+.Admin_Profile {
+  margin: 20vh 0 10vh 30vw;
+}

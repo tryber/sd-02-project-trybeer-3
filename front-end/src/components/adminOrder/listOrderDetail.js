@@ -15,7 +15,7 @@ export default function ListOrderDetailed(order) {
       <div className="container-big-border">
         {products.map((product) => (
           <div className="container-detail-admin" key={product.name}>
-            <h5>{`${product.qty} - ${product.name}`}</h5>
+            <h5>{`${parseInt(product.qty, 10)} - ${product.name}`}</h5>
             <p>{(product.total).toFixed(2)}</p>
           </div>
         ))}

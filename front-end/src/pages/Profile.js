@@ -6,8 +6,8 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import Trybeer from '../context';
 import InputsProfile from '../components/Profile/InputsProfile';
 import SaveButton from '../components/Profile/SaveButton';
-import '../styles/Profile.css';
 import AdminSidebar from '../components/Sidebar/AdminSidebar';
+import '../styles/Profile.css';
 
 const Profile = () => {
   const { setPage } = useContext(Trybeer);
@@ -28,7 +28,7 @@ const Profile = () => {
       {!isAdmin && <Header />}
       {!isAdmin && <Sidebar />}
       {isAdmin && <AdminSidebar />}
-      <div className="div-page-body-perfil">
+      <div className={role !== 'admin' ? 'div-page-body-perfil' : 'Admin_Profile'}>
         <InputsProfile />
         <SaveButton />
       </div>
