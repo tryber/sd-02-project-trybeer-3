@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Trybeer from '../../context';
 
 const AdminOrders = () => {
   const history = useHistory();
