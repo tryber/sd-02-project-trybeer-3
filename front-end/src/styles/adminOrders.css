@@ -1,6 +1,7 @@
 .container-orders {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 35vw;
 }
 
 .order-card {
@@ -8,7 +9,8 @@
   border-radius: 1em;
   display: flex;
   flex-direction: column;
-  height: 15vh;
+  align-items: center;
+  width: 100%;
   justify-content: center;
   margin: 1vh;
 }
@@ -31,7 +33,6 @@ a {
   border: 1px solid black;
   display: flex;
   justify-content: space-between;
-  margin: 1vh;
   padding: 1vh;
   width: 85%;
 }
@@ -44,7 +45,7 @@ a {
   flex-direction: column;
   margin: 1vh;
   padding: 1vh;
-  width: 30%;
+  width: 65%;
 }
 
 .inputs-checkout-container {
@@ -55,4 +56,25 @@ a {
 
 .inputs-checkout-container input {
   width: 60%;
+}
+
+.Admin_orders {
+  display: flex;
+  height: 100vh;
+}
+
+.Order_Card_All {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Order_Card_All a {
+  margin: 20px;
+  width: 160px;
+}
+
+.List_Order_Detail_all {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35vw;
 }

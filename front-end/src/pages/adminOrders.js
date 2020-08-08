@@ -35,13 +35,15 @@ export default function Login() {
   if (redirect) return <Redirect to="/login" />;
 
   return (
-    <div>
-      <div className="title-orders">Pedidos</div>
+    <div className="Admin_orders">
+      <AdminSidebar />
       <div className="container-orders">
-        <AdminSidebar />
-        {orders.map((order) => (
-          <OrderCard key={order.orderId} order={order} />
-        ))}
+        <h3 className="title-orders">Pedidos</h3>
+        <div className="Order_Card_All">
+          {orders.map((order) => (
+            <OrderCard key={order.orderId} order={order} />
+          ))}
+        </div>
       </div>
     </div>
   );

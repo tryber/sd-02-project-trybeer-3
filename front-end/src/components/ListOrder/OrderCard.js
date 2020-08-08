@@ -8,10 +8,10 @@ export default function OrderCard(order) {
   return (
     <Link to={`/admin/orders/${orderId}`}>
       <div className="order-card">
-        <div>{`Pedido ${orderId}`}</div>
-        <div>{adress}</div>
-        <div>{`R$ ${total.toFixed(2)}`}</div>
-        <div>{deliver ? 'Entregue' : 'Pendente'}</div>
+        <h4>{`Pedido ${orderId}`}</h4>
+        <p>{adress}</p>
+        <h5>{`R$ ${total.toFixed(2)}`}</h5>
+        <p>{deliver ? 'Entregue' : 'Pendente'}</p>
       </div>
     </Link>
   );
