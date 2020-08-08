@@ -17,7 +17,7 @@ const ClientOrderDetail = () => {
     const getDetailsOrder = async () => {
       const { data } = await getClientOrderDetail(token, id)
         .then((result) => result);
-      setOrderDetail(data);
+      setOrderDetail(data.order);
     };
     getDetailsOrder();
   }, [setOrderDetail, id, token]);
