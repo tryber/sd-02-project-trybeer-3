@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import '../styles/checkout.css';
 import '../styles/adminOrders.css';
 
+const getTotal = (cart) => cart.reduce((ac, { price, quantity }) => (ac + (price * quantity)), 0);
+
 const deleteItem = (id, setItens, setIds, setTotal) => {
-  console.log(id)
   const itens = JSON.parse(localStorage.getItem('cart'));
   delete itens[id];
 
@@ -12,9 +13,7 @@ const deleteItem = (id, setItens, setIds, setTotal) => {
   setItens(Object.values(itens));
   setIds(Object.keys(itens));
   setTotal(getTotal(Object.values(itens)));
-}
-
-const getTotal = (cart) => cart.reduce((ac, { price, quantity }) => (ac + (price * quantity)), 0);
+};
 
 export default function CartList() {
   const [itens, setItens] = useState(Object.values(JSON.parse(localStorage.getItem('cart'))));
