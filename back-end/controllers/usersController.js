@@ -27,10 +27,7 @@ const register = async (req, res, next) => {
   const user = await createUser(name, email, password, admin);
   if (user.error) return next({ code: 'conflict', message: user.message });
 
-  res.status(201).json({
-    status: 'success',
-    user,
-  });
+  return next();
 };
 
 const changeName = async (req, res, next) => {

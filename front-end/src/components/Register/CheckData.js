@@ -8,8 +8,9 @@ const validName = /[A-Z ]{12,}/i;
 const validPassword = /[0-9]{6,}/;
 
 const doRequest = async (obj, history) => {
-  await postRegister(obj);
-  localStorage.setItem('user', JSON.stringify(obj));
+  const { data: { status: _, ...user } } = await postRegister(obj);
+  localStorage.setItem('user', JSON.stringify(user));
+  if (user.role === 'admin') return history.push('/admin/orders');
   return history.push('/products');
 };
 
