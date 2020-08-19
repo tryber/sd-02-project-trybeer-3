@@ -14,8 +14,8 @@
 }
 
 .Details_order {
-  margin: 6em 1em 1em 1em;
   border: 1px solid black;
-  width: 15em;
+  margin: 6em 1em 1em;
   text-align: center;
+  width: 15em;
 }
