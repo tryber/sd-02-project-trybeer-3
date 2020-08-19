@@ -4,7 +4,7 @@ import Trybeer from '../../context';
 const ShowDetails = () => {
   const { orderDetail } = useContext(Trybeer);
   return orderDetail.products ? (
-    <div>
+    <div className="Details_order">
       <p>{`Pedido ${orderDetail.orderId}`}</p>
       <p>{`${orderDetail.day}/${orderDetail.month}`}</p>
       {orderDetail.products.map((product) => (
