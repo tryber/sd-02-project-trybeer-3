@@ -12,3 +12,10 @@
   flex-flow: row wrap;
   margin-top: 14vh;
 }
+
+.Details_order {
+  border: 1px solid black;
+  margin: 6em 1em 1em;
+  text-align: center;
+  width: 15em;
+}

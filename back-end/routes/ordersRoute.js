@@ -1,9 +1,13 @@
 const express = require('express');
 const { adminOrderDetail, orderDetails, allOrders } = require('../controllers/usersController');
-const { markAsDelivered } = require('../controllers/productsController');
+const { markAsDelivered, createOrder } = require('../controllers/productsController');
 const { authUser } = require('../controllers/authenticatorController');
 
 const router = express.Router();
+
+router
+  .route('/')
+  .post(authUser, createOrder);
 
 router
   .route('/admin')

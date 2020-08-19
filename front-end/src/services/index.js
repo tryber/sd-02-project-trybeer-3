@@ -7,7 +7,7 @@ const APIPatchProfile = 'http://localhost:3001/user/profile';
 const APIGetOrders = 'http://localhost:3001/user/orders/';
 const APIGetAdminOrders = 'http://localhost:3001/orders/admin';
 const APIOrderAdminDetail = 'http://localhost:3001/orders/admin/';
-const APICheckout = 'http://localhost:3001/products/checkout';
+const APICheckout = 'http://localhost:3001/orders/';
 const APIGetDetailsOrder = 'http://localhost:3001/orders/';
 
 const headers = {

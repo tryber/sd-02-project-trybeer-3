@@ -19,7 +19,7 @@ router
 
 router
   .route('/register')
-  .post(register);
+  .post(register, login);
 
 router
   .route('/profile')

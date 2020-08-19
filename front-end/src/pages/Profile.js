@@ -12,7 +12,7 @@ import '../styles/Profile.css';
 const Profile = () => {
   const { setPage } = useContext(Trybeer);
   const history = useHistory();
-  const { role } = ls.getItem('user');
+  const { role } = ls.getItem('user') || {};
   const isAdmin = role === 'admin';
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const Profile = () => {
     history.push('/login');
     return null;
   }
+
   return (
     <div>
       {!isAdmin && <Header />}
