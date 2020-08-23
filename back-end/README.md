@@ -1,4 +1,38 @@
 # POST localhost:3001/user/login
+* Login do usuário
+
+# POST localhost:3001/user/register
+* Registrar novo usuário
+
+# GET localhost:3001/products
+* Todos os produtos
+
+# PATCH localhost:3001/user/profile
+* Atualizar o nome do usuário.
+
+# POST localhost:3001/products/checkout
+* Criar o pedido.
+
+# GET localhost:3001/user/Orders
+* Todos os pedidos do usuário.
+
+# GET localhost:3001/user
+* Informações de usuário.
+
+# GET localhost:3001/orders/:id
+* Detalhe específico de uma receita.
+
+# localhost:3001/orders/admin
+* Todos os pedidos. Privilégios de admin.
+
+# localhost:3001/orders/admin/:id
+* Detalhes específicos de um pedido. Privilégios de admin.
+
+# localhost:3001/orders/admin/:orderId/delivered
+* Trocar o status de uma entrega para entregue
+
+--------------------------------------------------------------------------------------------------------------------
+# POST localhost:3001/user/login
 
 ## Request
 
@@ -194,7 +228,7 @@ authorization: JWT
 }
 ```
 
-## POST localhost:3001/products/checkout
+# POST localhost:3001/products/checkout
 ## Request
 ```
 body
@@ -433,7 +467,7 @@ authorization: JWT
 }
 ```
 
-# localhost:3001/orders/admin/2
+# localhost:3001/orders/admin/:id
 ## Request
 ```
 authorization: JWT
