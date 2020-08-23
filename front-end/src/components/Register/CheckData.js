@@ -42,8 +42,11 @@ const CheckData = () => {
   );
 
   return (
-    <div>
-      <button type="button" onClick={() => checkValues()}>Cadastre - se</button>
+    <div className="Register_CheckData">
+      <div className="Register_Button">
+        <button type="button" onClick={() => history.push('/login')}>Voltar</button>
+        <button type="button" onClick={() => checkValues()}>Cadastre - se</button>
+      </div>
       {wrongData ? <p>Confira novamente seus dados.</p> : null}
     </div>
   );
