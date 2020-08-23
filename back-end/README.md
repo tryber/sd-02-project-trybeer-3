@@ -22,13 +22,13 @@
 # GET localhost:3001/orders/:id
 * Detalhe específico de uma receita.
 
-# localhost:3001/orders/admin
+# GET localhost:3001/orders/admin
 * Todos os pedidos. Privilégios de admin.
 
-# localhost:3001/orders/admin/:id
+# GET localhost:3001/orders/admin/:id
 * Detalhes específicos de um pedido. Privilégios de admin.
 
-# localhost:3001/orders/admin/:orderId/delivered
+# PATCH localhost:3001/orders/admin/:orderId/delivered
 * Trocar o status de uma entrega para entregue
 
 --------------------------------------------------------------------------------------------------------------------
@@ -370,7 +370,7 @@ authorization: JWT
 }
 ```
 
-# localhost:3001/orders/admin
+# GET localhost:3001/orders/admin
 
 ## Request
 ```
@@ -467,7 +467,7 @@ authorization: JWT
 }
 ```
 
-# localhost:3001/orders/admin/:id
+# GET localhost:3001/orders/admin/:id
 ## Request
 ```
 authorization: JWT
@@ -513,7 +513,7 @@ authorization: JWT
 }
 ```
 
-# localhost:3001/orders/admin/:orderId/delivered
+# PATCH localhost:3001/orders/admin/:orderId/delivered
 
 ## Request
 ```
