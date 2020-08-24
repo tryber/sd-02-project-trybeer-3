@@ -30,10 +30,14 @@ const ShowOrders = () => {
           className="PastOrders_order"
           key={`${orderId} buy info`}
         >
-          <p>{`Pedido ${orderId}`}</p>
-          <p>{`${day}/${month}`}</p>
-          <p>{`Total: R$ ${total}`}</p>
+          <h4>{`Pedido ${orderId}`}</h4>
+          <i><p>{`${day}/${month}`}</p></i>
+          <p className="Total_word">
+            <b>Total:</b>
+            <span>{` R$ ${total.toFixed(2)}`}</span>
+          </p>
           <button
+            className="Orders_Button"
             type="button"
             onClick={() => history.push(`/orders/${orderId}`)}
           >

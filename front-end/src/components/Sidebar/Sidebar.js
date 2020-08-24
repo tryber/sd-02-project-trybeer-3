@@ -7,11 +7,14 @@ import ButtonExit from './Exit';
 import '../../styles/Sidebar.css';
 
 const Sidebar = () => {
-  const { open } = useContext(Trybeer);
+  const { open, setOpen } = useContext(Trybeer);
 
   return (
     open && (
-      <div className="Sidebar_All">
+      <div
+        className="Sidebar_All"
+        onMouseLeave={() => setOpen(false)}
+      >
         <div className="Sidebar_User">
           <p>Trybeer</p>
           <ButtonProducts />
