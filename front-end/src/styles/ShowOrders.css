@@ -1,6 +1,7 @@
 .PastOrders_order {
   align-items: center;
   border: 1px solid black;
+  border-radius: 20px;
   display: flex;
   flex-flow: column;
   margin: 10px;
