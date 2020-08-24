@@ -21,23 +21,33 @@
 }
 
 .Register_CheckData {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: auto;
+  justify-content: center;
   width: 100%;
 }
 
 .Register_Button {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   height: 4em;
+  justify-content: center;
   width: 100%;
 }
 
 .Register_Button button {
   background: rgb(28, 209, 24);
-  font-size: 15px;
+  font-size: 1em;
   height: 3em;
+  margin: 10px;
   width: 25vw;
+}
+
+.Register_Button button:hover {
+  background-color: chartreuse;
+  cursor: pointer;
 }
 
 .Register_Inputs label {
@@ -46,18 +56,11 @@
   line-height: 47px;
 }
 
-.Register_CheckData {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .Checkbox_Salesman {
   display: flex;
   justify-content: center;
   margin: 1em;
-  width: 25vw;
+  width: 50vw;
 }
 
 .Checkbox_Salesman label {
