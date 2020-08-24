@@ -1,21 +1,63 @@
-## POST localhost:3001/user/login
+# POST localhost:3001/user/login
+* Login do usuário
+
+# POST localhost:3001/user/register
+* Registrar novo usuário
+
+# GET localhost:3001/products
+* Todos os produtos
+
+# PATCH localhost:3001/user/profile
+* Atualizar o nome do usuário.
+
+# POST localhost:3001/products/checkout
+* Criar o pedido.
+
+# GET localhost:3001/user/Orders
+* Todos os pedidos do usuário.
+
+# GET localhost:3001/user
+* Informações de usuário.
+
+# GET localhost:3001/orders/:id
+* Detalhe específico de uma receita.
+
+# GET localhost:3001/orders/admin
+* Todos os pedidos. Privilégios de admin.
+
+# GET localhost:3001/orders/admin/:id
+* Detalhes específicos de um pedido. Privilégios de admin.
+
+# PATCH localhost:3001/orders/admin/:orderId/delivered
+* Trocar o status de uma entrega para entregue
+
+--------------------------------------------------------------------------------------------------------------------
+# POST localhost:3001/user/login
+
+## Request
 
 ```
 body:
 {
-    "email": "pedro@gmail.com",
+    "email": "email@gmail.com",
     "password": "123456"
 }
+```
 
-responses:
+## Responses
+
+* Success
+```
 {
     "status": "success",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGVkcm8iLCJlbWFpbCI6InBlZHJvQGdtYWlsLmNvbSIsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE1OTU2MTMwNDgsImV4cCI6MTU5NTYxNDg0OH0.LX0YJPVYl3oG5adXN6Pvd2qvhgsYWXfbYP13NIrXyNw",
-    "name": "Pedro",
-    "email": "pedro@gmail.com",
-    "role": "client"
+    "token": "JSON WEBTOKEN",
+    "name": "Name",
+    "email": "email@gmail.com",
+    "role": "client" || "admin"
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "unauthorized",
@@ -27,32 +69,42 @@ responses:
     "code": "invalid_data",
     "message": "Missing fields"
 }
-
 ```
 
-## POST localhost:3001/user/register
+# POST localhost:3001/user/register
+
+## Request
 
 ```
 body:
 {
-    "email": "pedro3@gmail.com",
+    "email": "email@gmail.com",
     "password": "123456",
-    "name": "Pedro Henrique",
-    "admin": true
+    "name": "Seu Nome",
+    "admin": true || false
 }
+```
 
-response:
+## Response
+
+* Success
+
+```
 {
     "status": "success",
     "user": {
-        "name": "Pedro Henrique",
+        "name": Seu Nome",
         "password": "123456",
-        "id": 7,
-        "email": "pedro3@gmail.com",
-        "role": "admin"
+        "id": 1,
+        "email": "email@gmail.com",
+        "role": "admin" || "client"
     }
 }
+```
 
+* Fail
+
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -60,10 +112,12 @@ response:
 }
 ```
 
-## GET localhost:3001/products
+# GET localhost:3001/products
 
+## Response
+
+* Success
 ```
-response:
 {
     "status": "success",
     "products": [
@@ -135,7 +189,10 @@ response:
         }
     ]
 }
+```
 
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -144,21 +201,26 @@ response:
 
 ```
 
-## PATCH localhost:3001/user/profile
+# PATCH localhost:3001/user/profile
 
+## Request
 ```
-req.body
-
-Lembrar de passar o token no auth
+body
 {
-    "name": "Pedro Henrique",
+    "name": "Seu nome",
 }
+authorization: JWT
+```
 
-response
+## Response
+* Success
+```
 {
     "status": "success"
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -166,12 +228,10 @@ response
 }
 ```
 
-## POST localhost:3001/products/checkout
-
+# POST localhost:3001/products/checkout
+## Request
 ```
-req.body
-
-Lembrar de passar o token no auth
+body
 {
     "street": "rua 1",
     "streetNumber": 12,
@@ -186,12 +246,18 @@ Lembrar de passar o token no auth
         }
     ]
 }
+authorization: JWT
+```
 
-response
+## Response
+* Success
+```
 {
     "status": "success"
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -199,12 +265,15 @@ response
 }
 ```
 
-## GET localhost:3001/user/Orders
+# GET localhost:3001/user/Orders
 
-Lembrar de passar o token no auth
+## Request
+```
+authorization: JWT
+```
+## Response
 
-response
-
+* Succcess
 ```
 {
     "status": "success",
@@ -223,7 +292,9 @@ response
         }
     ]
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -231,19 +302,24 @@ response
 }
 ```
 
-## GET localhost:3001/user
+# GET localhost:3001/user
 
-Lembrar de passar o token no auth
+## Request
+```
+authorization: JWT
+```
 
-response
-
+## Response
+* Success
 ```
 {
     "status": "success",
     "name": "Pedro",
     "email": "pedro@gmail.com"
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -251,12 +327,15 @@ response
 }
 ```
 
-## GET localhost:3001/orders/:id
+# GET localhost:3001/orders/:id
 
-Lembrar de passar o token no auth
+## Request
+```
+authorization: JWT
+```
 
-response
-
+## Response
+* Success:
 ```
 {
     "status": "success",
@@ -281,7 +360,9 @@ response
         "total": 15.390000343322754
     }
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -289,12 +370,15 @@ response
 }
 ```
 
-## localhost:3001/orders/admin
+# GET localhost:3001/orders/admin
 
-Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
+## Request
+```
+authorization: JWT
+```
 
-response
-
+## Response
+* success
 ```
 {
     "status": "success",
@@ -373,7 +457,9 @@ response
         }
     ]
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -381,12 +467,14 @@ response
 }
 ```
 
-## localhost:3001/orders/admin/2
+# GET localhost:3001/orders/admin/:id
+## Request
+```
+authorization: JWT
+```
 
-Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
-
-response
-
+## Response
+* Success
 ```
 {
     "status": "success",
@@ -415,7 +503,9 @@ response
         }
     ]
 }
-
+```
+* Fail
+```
 {
     "status": "failed",
     "code": "Código do erro",
@@ -423,12 +513,14 @@ response
 }
 ```
 
-## localhost:3001/orders/admin/:orderId/delivered
+# PATCH localhost:3001/orders/admin/:orderId/delivered
 
-Lembrar de passar o token no auth (só para admin essa rota hein kkkk)
+## Request
+```
+authorization: JWT
+```
 
-response
-
+## Response
 ```
 {
     "status": "success"
