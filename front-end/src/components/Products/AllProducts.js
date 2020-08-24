@@ -66,17 +66,19 @@ const AllProducts = () => {
             <p>{name}</p>
             <div className="Product_selectors">
               <button
-                type="button"
-                onClick={() => addProduct(product, setCartProducts)}
-              >
-                +
-              </button>
-              <p>{getProductQuantity(product, cartProducts)}</p>
-              <button
+                className="Quantity_button"
                 type="button"
                 onClick={() => removeProduct(product, setCartProducts)}
               >
                 -
+              </button>
+              <span className="Quantity_product">{getProductQuantity(product, cartProducts)}</span>
+              <button
+                className="Quantity_button"
+                type="button"
+                onClick={() => addProduct(product, setCartProducts)}
+              >
+                +
               </button>
             </div>
           </div>

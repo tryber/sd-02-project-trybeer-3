@@ -43,3 +43,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.Quantity_button {
+  font-size: 20px;
+  height: 5vh;
+  margin: 10px;
+}
+
+.Quantity_product {
+  font-size: 1em;
+}
