@@ -15,8 +15,16 @@
 }
 
 .Details_order {
+  align-items: center;
   border: 1px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
   margin: 6em 1em 1em;
   text-align: center;
-  width: 15em;
+  width: 97%;
+}
+
+.Details_order_beer {
+  padding: 20px;
 }
